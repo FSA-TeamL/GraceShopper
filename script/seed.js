@@ -20,7 +20,7 @@ async function seed() {
     let fakeProductName = faker.commerce.product();
     let fakeProductDescription = faker.commerce.productDescription();
     let fakerProductPrice = faker.commerce.price(1, 1000, 2);
-    let fakerProductImageUrl = faker.image.nature(640, 480);
+    let fakerProductImageUrl = faker.image.nature(150, 150);
 
     await Product.create({
       name: fakeProductName,
