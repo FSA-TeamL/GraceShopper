@@ -14,9 +14,9 @@ const User = db.define('user', {
   password: {
     type: Sequelize.STRING,
   },
-  role: {
-    type: Sequelize.STRING,
-      defaultValue: 'user'
+  isAdmin: {
+    type: Sequelize.BOOLEAN,
+      defaultValue: false
   },
    email: {
     type: Sequelize.STRING,
