@@ -20,9 +20,9 @@ export const productsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProductsAsync.fulfilled, (state, action) => {
       return action.payload;
-    })
-  }
-})
+    });
+  },
+});
 
 export const selectProducts = (state) => state.products;
 

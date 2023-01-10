@@ -16,8 +16,6 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-<<<<<<< HEAD
-=======
 router.get('/:id', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.id)
@@ -27,5 +25,4 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
->>>>>>> 8feeb169d3682779549a880ac880d1c9e7da80ba
 module.exports = router;
