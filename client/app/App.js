@@ -1,5 +1,5 @@
 import React from 'react';
-
+import AllProducts from '../features/AllProducts';
 import Navbar from '../features/navbar/Navbar';
 import AppRoutes from './AppRoutes';
 
