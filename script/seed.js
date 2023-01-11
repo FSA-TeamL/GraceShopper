@@ -6,6 +6,8 @@ const {
 } = require("../server/db");
 
 const faker = require("faker");
+const Cart = require("../server/db/models/Cart");
+const CartItem = require("../server/db/models/CartItem");
 
 /**
  * seed - this function clears the database, updates tables to
@@ -30,12 +32,28 @@ async function seed() {
     });
   }
 
+  await Cart.create({
+    id:1
+  })
+
   // Creating Users
   const users = await Promise.all([
-    User.create({ username: "user", password: "password", email:'user@email.com', addressLine1: '1 Main St.', city: 'New York', state: 'NY', zip: '12345-1234'}),
+    User.create({ username: "user", password: "password", email:'user@email.com', addressLine1: '1 Main St.', city: 'New York', state: 'NY', zip: '12345-1234', cartId:1}),
     User.create({ username: 'admin', password: 'password', isAdmin:true, email: 'admin@email.com', addressLine1: '1 Main St.', city: 'New York', state: 'NY', zip: '12345-1234'})
 
   ]);
+
+
+  await CartItem.create({
+    id:1,
+    cartId:1,
+    productId: 2
+  })
+  await CartItem.create({
+    id:2,
+    cartId:1,
+    productId: 4
+  })
 
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);

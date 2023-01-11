@@ -48,7 +48,6 @@ const User = db.define('user', {
 })
 
 module.exports = User
-
 /**
  * instanceMethods
  */
@@ -60,7 +59,6 @@ User.prototype.correctPassword = function(candidatePwd) {
 User.prototype.generateToken = function() {
   return jwt.sign({id: this.id}, process.env.JWT)
 }
-
 /**
  * classMethods
  */

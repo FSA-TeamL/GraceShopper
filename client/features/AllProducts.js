@@ -12,6 +12,8 @@ const AllProducts = () => {
     dispatch(fetchProductsAsync());
   }, [dispatch]);
 
+  const user = useSelector((state) => state.auth.me);
+
   return (
     <>
       <h1 className="pageTitle">Products</h1>
@@ -25,16 +27,9 @@ const AllProducts = () => {
               <div className="productButtonContainer">
                 <button
                   className="productButton"
-                  onClick={() =>
-                    dispatch(
-                      addToCart({
-                        id,
-                        name,
-                        imageUrl,
-                        price,
-                      })
-                    )
-                  }
+                  onClick={() => {
+                    console.log(user)
+                  }}
                 >
                   Add To Cart
                 </button>
