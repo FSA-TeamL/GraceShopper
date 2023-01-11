@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchProductsAsync, selectProducts } from "./slices/allProductsSlice";
 
 const AllProducts = () => {
-
   const products = useSelector(selectProducts);
 
   const dispatch = useDispatch();
@@ -14,22 +13,22 @@ const AllProducts = () => {
 
   return (
     <>
-      <h1>Products</h1>
-      <ul>
+      <h1 className="pageTitle">Products</h1>
+      <div className="products">
         {products.map((product) => {
           return (
-            <li key={product.id}>
-              <h2>{product.name}</h2>
-              <h2>${product.price}</h2>
+            <div className="productContainer" key={product.id}>
+              <h2 className="productName">{product.name}</h2>
+              <h2 className="productPrice">${product.price}</h2>
               <img src={product.imageUrl} />
-              <div>
-                <button>Add To Cart</button>
-                <button>Details</button>
+              <div className="productButtonContainer">
+                <button className="productButton">Add To Cart</button>
+                <button className="productButton">Details</button>
               </div>
-            </li>
+            </div>
           );
         })}
-      </ul>
+      </div>
     </>
   );
 };
