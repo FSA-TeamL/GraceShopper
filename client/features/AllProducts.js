@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addToCart } from "./slices/allCartSlice";
 import { fetchProductsAsync, selectProducts } from "./slices/allProductsSlice";
 
 const AllProducts = () => {
@@ -22,7 +23,21 @@ const AllProducts = () => {
               <h2 className="productPrice">${product.price}</h2>
               <img src={product.imageUrl} />
               <div className="productButtonContainer">
-                <button className="productButton">Add To Cart</button>
+                <button
+                  className="productButton"
+                  onClick={() =>
+                    dispatch(
+                      addToCart({
+                        id,
+                        name,
+                        imageUrl,
+                        price,
+                      })
+                    )
+                  }
+                >
+                  Add To Cart
+                </button>
                 <button className="productButton">Details</button>
               </div>
             </div>
