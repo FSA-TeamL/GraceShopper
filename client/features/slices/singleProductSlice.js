@@ -3,6 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchSingleProductAsync = createAsyncThunk('products/fetchSingle', async (productId) => {
   const {data} = await axios.get(`http://localhost:3000/api/products/${productId}`);
+  console.log("SINGLE PRODUCT THUNK", data)
   return data;
 });
 
