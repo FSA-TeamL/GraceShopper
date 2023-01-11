@@ -9,6 +9,7 @@ const App = () => {
     <div>
       <Navbar />
       <AppRoutes />
+      <AllProducts/>
       <Footer />
     </div>
   );
