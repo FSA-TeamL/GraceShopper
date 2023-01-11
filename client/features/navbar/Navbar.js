@@ -13,8 +13,8 @@ const Navbar = () => {
   };
 
   return (
-    <div>
-      <h1>FS-App-Template</h1>
+    <div className='header'>
+      <h1 className='siteTitle'>Welcome to the Store</h1>
       <nav>
         {isLoggedIn ? (
           <div>
