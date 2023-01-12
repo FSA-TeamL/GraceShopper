@@ -1,13 +1,17 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, Link } from "react-router-dom";
-import { fetchSingleProductAsync, selectSingleProduct } from "../slices/singleProductSlice";
+import { useParams } from "react-router-dom";
+import {
+  fetchSingleProductAsync,
+  selectSingleProduct,
+} from "../slices/singleProductSlice";
+import { addToCart } from "../slices/allCartSlice";
 
 const SingleProduct = () => {
   const product = useSelector(selectSingleProduct);
-  console.log("SINGLE PRODUCT COMPONENT", product)
+  console.log("SINGLE PRODUCT COMPONENT", product);
 
-  const {productId} = useParams();
+  const { productId } = useParams();
 
   const dispatch = useDispatch();
 
@@ -23,7 +27,7 @@ const SingleProduct = () => {
         <div>${product.price}</div>
         <div>{product.description}</div>
       </div>
-      <button>Add to Cart</button>
+      <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
     </>
   );
 };
