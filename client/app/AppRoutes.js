@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import AllProducts from "../features/AllProducts";
+import AllProducts from "../features/allProduct/AllProducts";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import UserCart from "../features/UserCart";
 import AuthForm from "../features/auth/AuthForm";
