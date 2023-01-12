@@ -1,18 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "./slices/allCartSlice";
 import { fetchProductsAsync, selectProducts } from "./slices/allProductsSlice";
+import { addToCartAsync } from "./slices/cartSlice";
+import { useParams } from "react-router-dom";
 
 const AllProducts = () => {
   const products = useSelector(selectProducts);
 
   const dispatch = useDispatch();
 
+  const [cartItemId, setCartItemId] = useState(null)
+  const [cartId, setCartId] = useState(null);
+  const [productId, setProductId] = useState(null);
+
   useEffect(() => {
     dispatch(fetchProductsAsync());
   }, [dispatch]);
 
   const user = useSelector((state) => state.auth.me);
+
+  const {shoppingCartId} = useParams();
+
+  // const addToCart = async () => {
+  //   dispatch(addToCartAsync(shoppingCartId)).then((res) => {
+  //     const { name, address } = res.payload;
+  //     setName(name);
+  //     setAddress(address);
+  //   });
+  // }
 
   return (
     <>
@@ -27,8 +43,8 @@ const AllProducts = () => {
               <div className="productButtonContainer">
                 <button
                   className="productButton"
-                  onClick={() => {
-                    console.log(user)
+                  onClick={()=>{
+                    console.log(product.name)
                   }}
                 >
                   Add To Cart

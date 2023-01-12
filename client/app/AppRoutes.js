@@ -3,14 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import AllProducts from "../features/AllProducts";
 import SingleProduct from "../features/singleProduct/SingleProduct";
-import AllCart from "../features/AllCart";
+import UserCart from "../features/UserCart";
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import { me } from "./store";
 
-/**
- * COMPONENT
- */
 
 const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -26,6 +23,7 @@ const AppRoutes = () => {
         <Routes>
           <Route path="/*" element={<Home />} />
           <Route to="/home" element={<Home />} />
+          <Route path="/usercart/:id" element={<UserCart />} />
         </Routes>
       ) : (
         <Routes>
@@ -43,7 +41,6 @@ const AppRoutes = () => {
           />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/cart" element={<AllCart />} />
         </Routes>
       )}
     </div>
