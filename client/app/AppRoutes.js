@@ -7,6 +7,7 @@ import UserCart from "../features/UserCart";
 import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import { me } from "./store";
+import VisitorCart from "../features/VisitorCart";
 
 
 const AppRoutes = () => {
@@ -41,6 +42,7 @@ const AppRoutes = () => {
           />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
+          <Route path="/cart" element={<VisitorCart />} />
         </Routes>
       )}
     </div>
