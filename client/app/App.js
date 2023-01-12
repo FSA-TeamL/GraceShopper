@@ -1,8 +1,8 @@
 import React from 'react';
-import AllProducts from '../features/AllProducts';
+import AllProducts from '../features/allProduct/AllProducts';
 import Navbar from '../features/navbar/Navbar';
 import AppRoutes from './AppRoutes';
-import Footer from '../features/Footer';
+import Footer from '../features/footer/Footer';
 
 const App = () => {
   return (

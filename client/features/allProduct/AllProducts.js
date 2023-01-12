@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "./slices/allCartSlice";
-import { fetchProductsAsync, selectProducts } from "./slices/allProductsSlice";
-import { addToCartAsync } from "./slices/cartSlice";
+import { addToCart } from "../slices/allCartSlice";
+import { fetchProductsAsync, selectProducts } from "../slices/allProductsSlice";
+import { addToCartAsync } from "../slices/cartSlice";
 import { useParams } from "react-router-dom";
 
 const AllProducts = () => {
