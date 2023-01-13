@@ -11,6 +11,7 @@ import EditProduct from "../editProduct/EditProduct";
 const SingleProduct = () => {
   const product = useSelector(selectSingleProduct);
   console.log("SINGLE PRODUCT COMPONENT", product);
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
   const { productId } = useParams();
 
@@ -30,7 +31,9 @@ const SingleProduct = () => {
         <div>${product.price}</div>
         <div>{product.description}</div>
       </div>
-      {user && user.isAdmin === true ? <EditProduct /> : <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>}
+      {isLoggedIn ? (<div>LOGGED IN</div>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
+      
+      {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
     </>
   );
 };
