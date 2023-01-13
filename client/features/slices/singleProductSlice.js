@@ -7,16 +7,20 @@ export const fetchSingleProductAsync = createAsyncThunk('products/fetchSingle', 
   return data;
 });
 
-// ***USE FOR ADMIN***
-// export const editCampusAsync = createAsyncThunk('campus/editCampus',
-// async ( {campusId, name, address}) => {
-//   const { data } = await axios.put(`http://localhost:3000/api/campuses/${campusId}`,
-//   {
-//     name,
-//     address,
-//   });
-//   return data;
-// });
+export const editProductAsync = createAsyncThunk("product/edit", async (product) => {
+    try {
+      const { id, name, description, imageUrl, price } = product;
+      const updatedProduct = { id, name, description, imageUrl, price };
+      const { data } = await axios.put(
+        `http://localhost:3000/api/products/${product.productId}`, //if issue come back here
+        updatedProduct
+      );
+      return data;
+    } catch(err) {
+      next(err);
+    }
+  }
+);
 
 export const singleProductSlice = createSlice({
   name: 'product',
@@ -26,10 +30,9 @@ export const singleProductSlice = createSlice({
     builder.addCase(fetchSingleProductAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    // ***USE FOR ADMIN***
-    // builder.addCase(editCampusAsync.fulfilled, (state, action) => {
-    //   return action.payload;
-    // });
+    builder.addCase(editProductAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
   }
 });
 
