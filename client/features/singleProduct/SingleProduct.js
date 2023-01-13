@@ -6,6 +6,7 @@ import {
   selectSingleProduct,
 } from "../slices/singleProductSlice";
 import { addToCart } from "../slices/allCartSlice";
+import EditProduct from "../editProduct/EditProduct";
 
 const SingleProduct = () => {
   const product = useSelector(selectSingleProduct);
@@ -14,6 +15,8 @@ const SingleProduct = () => {
   const { productId } = useParams();
 
   const dispatch = useDispatch();
+
+  const user = useSelector((state) => state.auth.me);
 
   useEffect(() => {
     dispatch(fetchSingleProductAsync(productId));
@@ -27,7 +30,7 @@ const SingleProduct = () => {
         <div>${product.price}</div>
         <div>{product.description}</div>
       </div>
-      <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>
+      {user && user.isAdmin === true ? <EditProduct /> : <button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>}
     </>
   );
 };
