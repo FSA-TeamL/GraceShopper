@@ -19,7 +19,7 @@ const UserCart = () => {
 
   return (
     <>
-     {cart.map((item) => {
+     {cart && cart.length ? cart.map((item) => {
           return (
             <div className="productContainer" key={item.product.id}>
               <h2 className="productName">{item.product.name}</h2>
@@ -27,7 +27,9 @@ const UserCart = () => {
               <img src={item.product.imageUrl} />
               </div>
         )}
-     )}
+     )
+     : "No Items in Cart"
+    }
     </>
     )
 }

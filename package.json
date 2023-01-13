@@ -27,6 +27,7 @@
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.8.0",
+    "phosphor-react": "^1.4.1",
     "sequelize": "^6.25.3"
   },
   "devDependencies": {

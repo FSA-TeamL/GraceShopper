@@ -15,12 +15,11 @@ export const fetchCartAsync = createAsyncThunk(
 
 export const addToCartAsync = createAsyncThunk(
   "cart/add",
-  async (cartItem) => {
+  async ({cartId, productId}) => {
     try {
-      const {cartItemId, cartId, productId} = cartItem
-      const newItem = {cartItemId, cartId, productId}
-      const { data } = await axios.post(`http://localhost:3000/api/cart/${cartItem.cartId}`, {
-        newItem
+      const { data } = await axios.post(`http://localhost:3000/api/cart/${cartId}`, {
+        cartId,
+        productId
       });
       return data;
     } catch (err) {
@@ -38,7 +37,7 @@ export const cartSlice = createSlice({
       return action.payload;
     });
     builder.addCase(addToCartAsync.fulfilled, (state, action) => {
-      return action.payload;
+      state.push(action.payload);
     });
   },
 });
