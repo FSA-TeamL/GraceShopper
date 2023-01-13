@@ -17,7 +17,7 @@ export const editProductAsync = createAsyncThunk("product/edit", async (product)
       );
       return data;
     } catch(err) {
-      next(err);
+      console.log(err);
     }
   }
 );

@@ -21,9 +21,10 @@ const AllProducts = () => {
   const { id } = useParams();
 
   const addToCart = async (product) => {
+    let quantity = 1;
     let cartId = user.cartId;
     let productId = product.id;
-    dispatch(addToCartAsync({ cartId, productId }));
+    dispatch(addToCartAsync({ quantity, cartId, productId }));
   };
 
   return (
@@ -47,7 +48,7 @@ const AllProducts = () => {
                   Add To Cart
                 </button>) : (<div>NOT LOGGED IN</div>)}
 
-          
+
                 <button
                   className="productButton"
                   onClick={() => navigate(`/products/${product.id}`)}

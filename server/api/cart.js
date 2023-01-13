@@ -23,4 +23,14 @@ router.post('/:id', async (req, res, next) => {
   }
 });
 
+router.put('/:id/:idx', async (req, res, next) => {
+  try {
+    const cartitem = await CartItem.findByPk(req.params.idx);
+    const updatedCartItem = await cartitem.update(req.body)
+    res.send(updatedCartItem);
+  } catch (error) {
+    next(error)
+  }
+});
+
 module.exports = router;
