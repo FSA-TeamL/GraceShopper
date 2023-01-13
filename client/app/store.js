@@ -14,7 +14,9 @@ const store = configureStore({
     cart: cartReducer,
     cart2: cartsReducer
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  // testing it without the logger
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 export default store;

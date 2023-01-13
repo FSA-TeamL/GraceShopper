@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../slices/allCartSlice";
 import { fetchProductsAsync, selectProducts } from "../slices/allProductsSlice";
 import { addToCartAsync } from "../slices/cartSlice";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
   const products = useSelector(selectProducts);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
 
   useEffect(() => {
     dispatch(fetchProductsAsync());
@@ -19,11 +21,10 @@ const AllProducts = () => {
   const { id } = useParams();
 
   const addToCart = async (product) => {
-    let cartId = user.cartId
-    let productId = product.id
-    dispatch(addToCartAsync({cartId, productId})
-    )};
-
+    let cartId = user.cartId;
+    let productId = product.id;
+    dispatch(addToCartAsync({ cartId, productId }));
+  };
 
   return (
     <>
@@ -36,15 +37,23 @@ const AllProducts = () => {
               <h2 className="productPrice">${product.price}</h2>
               <img src={product.imageUrl} />
               <div className="productButtonContainer">
-                <button
+
+                {isLoggedIn ? (<button
                   className="productButton"
-                  onClick={()=>{
-                    addToCart(product)
+                  onClick={() => {
+                    addToCart(product);
                   }}
                 >
                   Add To Cart
+                </button>) : (<div>NOT LOGGED IN</div>)}
+
+          
+                <button
+                  className="productButton"
+                  onClick={() => navigate(`/products/${product.id}`)}
+                >
+                  Details
                 </button>
-                <button className="productButton">Details</button>
               </div>
             </div>
           );
