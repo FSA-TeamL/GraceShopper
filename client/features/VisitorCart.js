@@ -11,7 +11,7 @@ const VisitorCart = () => {
     {cart?.map((product) => (
       <CartItem 
       key={product.id}
-      yo={product}
+      item={product}
       />
   
     ))}

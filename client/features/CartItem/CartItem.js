@@ -1,12 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 
-const CartItem = ({yo}) => {
+const CartItem = ({item}) => {
 
   return (
     <div>
-      <div>{yo.name}</div>
-      
+      <h2>{item.name}</h2>
+      <h2>${item.price}</h2>
+      <img src={item.imageUrl} />
     </div>
   );
 };
