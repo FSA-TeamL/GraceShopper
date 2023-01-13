@@ -23,7 +23,7 @@ const Navbar = () => {
         {isLoggedIn ? (
           <div>
             {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
+            <Link to="/products">Home</Link>
             <Link to={`/usercart/${id}`}>
               <ShoppingCart size={28}/>
             </Link>

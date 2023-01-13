@@ -20,14 +20,17 @@ const AppRoutes = () => {
 
   return (
     <div>
+      
       {isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<AllProducts />} />
-          <Route to="/home" element={<AllProducts />} />
           <Route path="/usercart/:id" element={<UserCart />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
         </Routes>
       ) : (
+        <Routes>
+          <Route path="/cart" element={<VisitorCart />} />
+        </Routes>
+        )}
         <Routes>
           <Route
             path="/*"
@@ -43,9 +46,9 @@ const AppRoutes = () => {
           />
           <Route path="/products" element={<AllProducts />} />
           <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/cart" element={<VisitorCart />} />
+          <Route path="/*" element={<AllProducts />} />
+          <Route to="/home" element={<AllProducts />} />
         </Routes>
-      )}
     </div>
   );
 };

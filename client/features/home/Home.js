@@ -7,6 +7,7 @@ import { me } from '../auth/authSlice';
  */
 const Home = (props) => {
 
+  console.log("what are props on the home page?", props)
   const username = useSelector((state) => state.auth.me.username);
   const isAdmin = useSelector((state) => state.auth.me.isAdmin)
 
