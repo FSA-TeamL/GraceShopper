@@ -12,11 +12,15 @@ const AuthForm = ({ name, displayName }) => {
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  console.log('the auth form name', name)
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
+
+    console.log('formName', formName)
     dispatch(authenticate({ username, password, method: formName }));
   };
 
@@ -26,7 +30,7 @@ const AuthForm = ({ name, displayName }) => {
         <div>
           <label htmlFor="username">
           </label>
-          <input name="username" type="text" placeholder='Username' />
+          <input name="username" type="text" placeholder='Email' />
         </div>
         <div>
           <label htmlFor="password">
