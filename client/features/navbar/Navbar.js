@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
+import { ShoppingCart } from 'phosphor-react';
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
@@ -12,6 +13,9 @@ const Navbar = () => {
     navigate('/login');
   };
 
+  const id = useSelector((state) => state.auth.me.cartId);
+
+
   return (
     <div className='header'>
       <h1 className='siteTitle'>Welcome to the Store</h1>
@@ -20,6 +24,9 @@ const Navbar = () => {
           <div>
             {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
+            <Link to={`/usercart/${id}`}>
+              <ShoppingCart size={28}/>
+            </Link>
             <button type="button" onClick={logoutAndRedirectHome}>
               Logout
             </button>

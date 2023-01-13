@@ -48,27 +48,6 @@ async function seed() {
   ]);
 
 
-  await CartItem.create({
-    id:1,
-    cartId:1,
-    productId: 2
-  })
-  await CartItem.create({
-    id:2,
-    cartId:1,
-    productId: 4
-  })
-  await CartItem.create({
-    id:3,
-    cartId:2,
-    productId: 11
-  })
-  await CartItem.create({
-    id:4,
-    cartId:2,
-    productId: 14
-  })
-
   console.log(`seeded ${users.length} users`);
   console.log(`seeded successfully`);
   return {

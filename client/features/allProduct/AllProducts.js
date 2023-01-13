@@ -10,25 +10,20 @@ const AllProducts = () => {
 
   const dispatch = useDispatch();
 
-  const [cartItemId, setCartItemId] = useState(null)
-  const [cartId, setCartId] = useState(null);
-  const [productId, setProductId] = useState(null);
-
   useEffect(() => {
     dispatch(fetchProductsAsync());
   }, [dispatch]);
 
   const user = useSelector((state) => state.auth.me);
 
-  const {shoppingCartId} = useParams();
+  const { id } = useParams();
 
-  // const addToCart = async () => {
-  //   dispatch(addToCartAsync(shoppingCartId)).then((res) => {
-  //     const { name, address } = res.payload;
-  //     setName(name);
-  //     setAddress(address);
-  //   });
-  // }
+  const addToCart = async (product) => {
+    let cartId = user.cartId
+    let productId = product.id
+    dispatch(addToCartAsync({cartId, productId})
+    )};
+
 
   return (
     <>
@@ -44,7 +39,7 @@ const AllProducts = () => {
                 <button
                   className="productButton"
                   onClick={()=>{
-                    console.log(product.name)
+                    addToCart(product)
                   }}
                 >
                   Add To Cart

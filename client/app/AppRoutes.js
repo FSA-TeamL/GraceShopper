@@ -22,8 +22,8 @@ const AppRoutes = () => {
     <div>
       {isLoggedIn ? (
         <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
+          <Route path="/*" element={<AllProducts />} />
+          <Route to="/home" element={<AllProducts />} />
           <Route path="/usercart/:id" element={<UserCart />} />
         </Routes>
       ) : (
