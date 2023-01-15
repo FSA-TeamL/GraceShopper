@@ -37,18 +37,16 @@ const UserCart = () => {
 
 
   const getCartTotal = () => {
+    let cartTotal = 0
 
-  let cartTotal = 0
-
-  for (let i=0; i<cart.length; i++){
-    let itemTotal = cart[i].product.price * cart[i].quantity;
-    cartTotal += itemTotal
+    for (let i=0; i<cart.length; i++){
+      let itemTotal = cart[i].product.price * cart[i].quantity;
+      cartTotal += itemTotal
+    }
+    return cartTotal
   }
-  return cartTotal
-}
 
   getCartTotal()
-
 
   return (
     <>
