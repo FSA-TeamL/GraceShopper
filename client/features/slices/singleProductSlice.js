@@ -31,7 +31,8 @@ export const editProductAsync = createAsyncThunk(
 
 export const addProductAsync = createAsyncThunk(
   "product/add",
-  async ({ product }) => {
+  async (product) => {
+    console.log("this is product in the add thunk", product)
     const { id, name, description, imageUrl, price } = product;
     const { data } = await axios.post("http://localhost:3000/api/products", {
       id,

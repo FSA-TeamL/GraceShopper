@@ -21,15 +21,16 @@ const AddProduct = () => {
   const handleAdd = async (evt) => {
     evt.preventDefault();
     const newProduct = { name, description, price, imageurl };
+    console.log("this is the new product on the add product component", newProduct)
     await dispatch(addProductAsync(newProduct));
-    navigate(`/products/${evt.target.value}`);
+    navigate("/products");
   };
 
 
   return (
     <>
       <h2>Add New Product Information: </h2>
-      <form id="editForm" onSubmit={handleAdd}>
+      <form id="addForm" onSubmit={handleAdd}>
         <label htmlFor="addProduct">Name: </label>
         <input
           name="Name"
@@ -54,7 +55,7 @@ const AddProduct = () => {
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-        <button type="submit" className="editProductButton">
+        <button type="submit" className="addProductButton">
           Submit{" "}
         </button>
       </form>
