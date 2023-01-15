@@ -4,7 +4,7 @@ body {
   height: 100vh;
 }
 
-#app{
+#app {
   display: flex;
   flex-direction: column;
 }
@@ -30,21 +30,21 @@ form div {
 
 /* ------------------------Header-------------------- */
 
-.header{
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgb(194, 194, 194);
 }
 
-/* ------------------------All Produccts Page-------------------- */
+/* ------------------------Products-------------------- */
 
-.pageTitle{
+.pageTitle {
   display: flex;
   justify-content: center;
 }
 
-.products{
+.products {
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
@@ -52,13 +52,81 @@ form div {
   margin-top: 1rem;
 }
 
+.productContainer{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 10px;
+  margin: 0 auto;
+  background: pink;
+  width: 25%;
+  padding: 10px;
+}
+
+.productContainerCart {
+  background-color: pink;
+  border: 10px;
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 1rem;
+  height: 10rem;
+}
+
+/* ------------------------Single Product-------------------- */
+.singleProduct{
+  display: flex;
+  /* flex-direction: column;
+  align-items: left;
+  margin: 2rem; */
+  padding: 20px;
+  width: 100%;
+}
+
+.descriptionOfProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 2rem;
+}
+
+/* ------------------------Logging in/ Signing up-------------------- */
+.authForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 2rem;
+}
+
+/* ------------------------NavBar-------------------- */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  float: right;
+  align-items: center;
+  background-color: rgb(194, 194, 194);
+  height: 5rem;
+}
+
+nav div a:hover{
+  color: rgb(255, 0, 0);
+}
+
+nav a {
+  color: black;
+  font-size: 1.5rem;
+  margin: 0 1rem;
+}
+
+
 /* ------------------------Footer-------------------- */
 
-.footer{
+.footer {
   bottom: 0;
   width: 100%;
   display: flex;
-  height: 15rem;
+  height: 7rem;
   background-color: rgb(197, 197, 197);
-
+  position: fixed;
 }
