@@ -36,6 +36,20 @@ const UserCart = () => {
   }
 
 
+  const getCartTotal = () => {
+
+  let cartTotal = 0
+
+  for (let i=0; i<cart.length; i++){
+    let itemTotal = cart[i].product.price * cart[i].quantity;
+    cartTotal += itemTotal
+  }
+  return cartTotal
+}
+
+  getCartTotal()
+
+
   return (
     <>
      {cart && cart.length ? cart.map((item) => {
@@ -53,10 +67,12 @@ const UserCart = () => {
                 increaseQty(item)
                 }}>+</button>
               </div>
+
         )}
+
      )
      : "No Items in Cart"
-    }
+    }<h1>Total: ${getCartTotal()}</h1>
     </>
     )
 }
