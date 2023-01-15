@@ -28,7 +28,7 @@ export const addToCartAsync = createAsyncThunk(
   }
 );
 
-export const increaseQtyAsync = createAsyncThunk("cart/increase", async (cartItem) => {
+export const adjustQtyAsync = createAsyncThunk("cart/increase", async (cartItem) => {
   try {
     const { id, quantity, cartId } = cartItem;
     const updatedCartItemQty = { id, quantity, cartId };
@@ -55,7 +55,7 @@ export const cartSlice = createSlice({
     builder.addCase(addToCartAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    builder.addCase(increaseQtyAsync.fulfilled, (state, action) => {
+    builder.addCase(adjustQtyAsync.fulfilled, (state, action) => {
       return action.payload
     });
   },
