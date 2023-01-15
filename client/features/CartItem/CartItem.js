@@ -17,11 +17,8 @@ const CartItem = ({ item, quantity = 0 }) => {
         <img src={item.imageUrl} />
       </div>
       <div>
-        <button onClick={() => dispatch(decrementQuantity(id))}>-</button>
-        <p>{quantity}</p>
-        <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
+        <p>{item.quantity}</p>
       </div>
-      <button onClick={() => dispatch(removeItem(id))}>Remove</button>
     </>
   );
 };
