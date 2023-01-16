@@ -71,7 +71,7 @@ export const singleProductSlice = createSlice({
       return action.payload;
     });
     builder.addCase(addProductAsync.fulfilled, (state, action) => {
-      state.push(action.payload);
+      return action.payload;
     });
     builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
       return action.payload;

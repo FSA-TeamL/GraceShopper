@@ -4,7 +4,10 @@ const Footer = () => {
 
   return (
     <div className="footer">
-      <h1>Page Footer</h1>
+      <div>Contact Us </div>
+      <div className="footerDetails"> (444)-444-444</div>
+      <div> 4 | p </div>
+      <div className="footerDetails"> lantsUnlimited@email.com</div>
     </div>
   )
 
