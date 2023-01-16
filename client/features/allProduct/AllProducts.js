@@ -4,6 +4,7 @@ import { addToCart } from "../slices/allCartSlice";
 import { fetchProductsAsync, selectProducts } from "../slices/allProductsSlice";
 import { addToCartAsync } from "../slices/cartSlice";
 import { useParams, useNavigate } from "react-router-dom";
+import AddProduct from "../addProduct/AddProduct";
 
 const AllProducts = () => {
   const products = useSelector(selectProducts);
@@ -29,6 +30,7 @@ const AllProducts = () => {
 
   return (
     <>
+      {user && user.isAdmin === true ?  <AddProduct /> : <div></div>}
       <h1 className="pageTitle">Products</h1>
       <div className="products">
         {products.map((product) => {
