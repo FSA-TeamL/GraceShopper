@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
-  fetchSingleProductAsync, 
+  fetchSingleProductAsync,
   selectSingleProduct,
 } from "../slices/singleProductSlice";
 import { addToCart } from "../slices/allCartSlice";
@@ -32,10 +32,7 @@ const SingleProduct = () => {
         <div>{product.description}</div>
       </div>
       {isLoggedIn ? (<div>LOGGED IN</div>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
-<<<<<<< HEAD
 
-=======
->>>>>>> 95486ba9de67734d3fd1f326be028de3ddc6fe13
       {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
     </>
   );
