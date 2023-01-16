@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchSingleProductAsync, editProductAsync, selectSingleProduct } from "../slices/singleProductSlice";
+import {
+  fetchSingleProductAsync,
+  editProductAsync,
+  deleteProductAsync,
+  selectSingleProduct,
+} from "../slices/singleProductSlice";
 import { useParams } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const EditProduct = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { productId } = useParams();
 
@@ -22,45 +28,56 @@ const EditProduct = () => {
     await dispatch(editProductAsync(updatedProduct));
   };
 
+  const handleDelete = async (evt) => {
+    evt.preventDefault();
+    await dispatch(deleteProductAsync(evt.target.value));
+    navigate("/products");
+  };
+
   useEffect(() => {
     dispatch(fetchSingleProductAsync(productId)).then((res) => {
       const { name, description, price, imageUrl } = res.payload;
-      setName (name);
-      setDescription (description);
-      setPrice (price);
-      setImageUrl (imageUrl);
+      setName(name);
+      setDescription(description);
+      setPrice(price);
+      setImageUrl(imageUrl);
     });
   }, [productId]);
 
   return (
     <>
       <h2>Edit Product Information: </h2>
+      <button value={product.id} onClick={handleDelete}>
+        DELETE
+      </button>
       <form id="editForm" onSubmit={handleSubmit}>
         <label htmlFor="editProduct">Name: </label>
-          <input
-            name="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+        <input
+          name="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <label htmlFor="editProduct">Description: </label>
-          <input
-              description="Description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
+        <input
+          description="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <label htmlFor="editProduct">ImageUrl: </label>
-          <input
-              imageUrl="ImageUrl"
-              value={imageUrl}
-              onChange={(e) => setImageUrl(e.target.value)}
-            />
+        <input
+          imageUrl="ImageUrl"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
         <label htmlFor="editProduct">Price: </label>
-          <input
-              price="Price"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-            />
-        <button type="submit" className="editProductButton">Submit </button>
+        <input
+          price="Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+        />
+        <button type="submit" className="editProductButton">
+          Submit{" "}
+        </button>
       </form>
     </>
   );

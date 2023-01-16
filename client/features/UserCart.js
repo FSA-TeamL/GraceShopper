@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { fetchCartAsync, selectCart, increaseQtyAsync } from './slices/cartSlice'
+import { fetchCartAsync, selectCart, adjustQtyAsync } from './slices/cartSlice'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from 'react-router-dom';
 
@@ -18,14 +18,36 @@ const UserCart = () => {
     dispatch(fetchCartAsync(id));
   }, [dispatch]);
 
-  const handleQty = (item) => {
+  const increaseQty = (item) => {
     let id = item.id
     let cartId = user.cartId
     let quantity = item.quantity
     quantity ++
     const updatedQty = { id, quantity, cartId }
-    dispatch(increaseQtyAsync(updatedQty))
+    dispatch(adjustQtyAsync(updatedQty))
   }
+  const decreaseQty = (item) => {
+    let id = item.id
+    let cartId = user.cartId
+    let quantity = item.quantity
+    quantity --
+    const updatedQty = { id, quantity, cartId }
+    dispatch(adjustQtyAsync(updatedQty))
+  }
+
+
+  const getCartTotal = () => {
+
+  let cartTotal = 0
+
+  for (let i=0; i<cart.length; i++){
+    let itemTotal = cart[i].product.price * cart[i].quantity;
+    cartTotal += itemTotal
+  }
+  return cartTotal
+}
+
+  getCartTotal()
 
 
   return (
@@ -38,13 +60,19 @@ const UserCart = () => {
               <h2 className="productQty">Qty: {item.quantity}</h2>
               <img src={item.product.imageUrl} />
               <button onClick={()=>{
-                handleQty(item)
-                }}>ANOTHA ONE</button>
+                decreaseQty(item)
+                }}>-</button>
+                <small>{item.quantity}</small>
+              <button onClick={()=>{
+                increaseQty(item)
+                }}>+</button>
               </div>
+
         )}
+
      )
      : "No Items in Cart"
-    }
+    }<h1>Total: ${getCartTotal()}</h1>
     </>
     )
 }

@@ -20,11 +20,10 @@ const AppRoutes = () => {
 
   return (
     <div>
-      
+
       {isLoggedIn ? (
         <Routes>
           <Route path="/usercart/:id" element={<UserCart />} />
-          <Route path="/products/:productId" element={<SingleProduct />} />
         </Routes>
       ) : (
         <Routes>

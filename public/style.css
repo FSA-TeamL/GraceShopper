@@ -4,7 +4,7 @@ body {
   height: 100vh;
 }
 
-#app{
+#app {
   display: flex;
   flex-direction: column;
 }
@@ -30,21 +30,25 @@ form div {
 
 /* ------------------------Header-------------------- */
 
-.header{
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: rgb(194, 194, 194);
+  background-color: darkcyan;
 }
 
-/* ------------------------All Produccts Page-------------------- */
+/* ------------------------Products-------------------- */
+.siteTitle{
+  color: rgb(216, 223, 219);
+}
 
-.pageTitle{
+.pageTitle {
   display: flex;
   justify-content: center;
+  color: lightcoral;
 }
 
-.products{
+.products {
   display: flex;
   flex-wrap: wrap;
   gap: 4rem;
@@ -52,13 +56,129 @@ form div {
   margin-top: 1rem;
 }
 
+.productContainer{
+  display: flex;
+  flex-direction: column;
+  /* grid-template-columns: 2fr 1fr; */
+  /* gap: 6px; */
+  margin: 0 auto;
+  background: darkseagreen;
+  width: 15%;
+  padding: 15px;
+  border: 30px;
+}
+
+.productContainerCart {
+  background-color: pink;
+  border: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 5fr;
+  gap: 2rem;
+  margin: 1rem;
+  height: 10rem;
+}
+
+.productName{
+  color: rgb(236, 116, 176);
+}
+
+.productButton{
+  /* background-color: lightcoral;
+  position: relative;
+  padding: 5px;
+  border-radius: 100px;
+  position: fixed; */
+  /* bottom: 40px; */
+  /* right: 10%; */
+  /* z-index: 1; */
+  position: absolute;
+  /* top: 0; */
+  /* right: 0; */
+  background-color: lightblue;
+  /* padding: 4px 8px; */
+  color: black;
+  border-radius: 50px;
+}
+
+.productButton:hover{
+  background-color: rgb(170, 168, 168);
+  color: white;
+}
+
+.notLoggedIn{
+  display: flex;
+  justify-content: center;
+  color: darkcyan;
+}
+
+.productPrice{
+  color: rgb(227, 236, 227);
+}
+/* .allProductsBackground{
+  background-color: darkseagreen;
+} */
+
+/* ------------------------Single Product-------------------- */
+.singleProduct{
+  display: flex;
+  /* flex-direction: column;
+  align-items: left;
+  margin: 2rem; */
+  padding: 20px;
+  width: 100%;
+}
+
+.descriptionOfProduct {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 2rem;
+}
+
+/* ------------------------Logging in/ Signing up-------------------- */
+.authForm {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  margin: 2rem;
+}
+
+/* ------------------------NavBar-------------------- */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  float: right;
+  align-items: center;
+  background-color: darkcyan;
+  height: 5rem;
+}
+
+nav div a:hover{
+  color: rgb(170, 168, 168);
+}
+
+nav a {
+  color: black;
+  font-size: 1.5rem;
+  margin: 0 1rem;
+}
+
+
 /* ------------------------Footer-------------------- */
 
-.footer{
+.footer {
   bottom: 0;
   width: 100%;
   display: flex;
-  height: 15rem;
-  background-color: rgb(197, 197, 197);
+  height: 5rem;
+  background-color: darkcyan;
+  position: fixed;
+  padding: 10px;
+  font-size: 1.5rem;
+}
 
+.footerDetails:hover{
+  color: rgb(170, 168, 168);
 }
