@@ -8,7 +8,8 @@ import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import { me } from "./store";
 import VisitorCart from "../features/VisitorCart";
-import Checkout from "../features/checkout/Checkout";
+import UserCheckout from "../features/UserCheckout/UserCheckout"
+import VisitorCheckout from "../features/VisitorCheckout/VisitorCheckout";
 import Confirmation from "../features/confirmation/Confirmation";
 import Users from "../features/users/Users"
 
@@ -35,7 +36,8 @@ const AppRoutes = () => {
         </Routes>
         )}
         <Routes>
-          <Route path="/checkout/:id" element={<Checkout />} />
+          <Route path="/checkout/:id" element={<UserCheckout />} />
+          <Route path="/visitorCheckout/:visitorId" element={<VisitorCheckout />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route
             path="/*"

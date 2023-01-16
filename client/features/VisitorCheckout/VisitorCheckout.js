@@ -1,33 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCartAsync, selectCart, adjustQtyAsync } from '../slices/cartSlice'
 import { useParams, Link } from 'react-router-dom';
+import CartItem from '../CartItem/CartItem';
 
 
+const visitorCheckout = () => {
 
-const Checkout = () => {
-
-  const user = useSelector((state) => state.auth.me);
-  console.log("USER", user)
-
-  const cart = useSelector(selectCart);
-  console.log("CHECKOUT CART", cart);
+  const visitorCart = useSelector((state) => state.cart2);
+  console.log("VISITOR CART", visitorCart)
 
   const { id } = useParams();
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchCartAsync(id));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchCartAsync(id));
+  // }, [dispatch]);
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
-    const formName = evt.target.name;
-    const username = evt.target.username.value;
-    const password = evt.target.password.value;
-    console.log('formName', formName)
-    dispatch(authenticate({ username, password, method: formName }));
+  const Total = () => {
+    let totalQuantity = 0;
+    let totalPrice = 0;
+    visitorCart.forEach((item) => {
+      totalQuantity += item.quantity;
+      totalPrice += item.price * item.quantity;
+    });
+    return { totalPrice, totalQuantity };
   };
 
   return (
@@ -50,26 +47,24 @@ const Checkout = () => {
 
         <div className="checkoutMain">
           <div className="checkoutCart">
-            {cart && cart.length ? cart.map((item) => {
-              return (
-                <div className="checkoutProductContainer" key={item.product.id}>
-                  <h2 className="productName">{item.product.name}</h2>
-                  <h2 className="productPrice">${item.product.price}</h2>
-                  <h2 className="productQty">Qty: {item.quantity}</h2>
-                  <img src={item.product.imageUrl} />
-                  <button onClick={() => {
-                    decreaseQty(item)
-                  }}>-</button>
-                  <small>{item.quantity}</small>
-                  <button onClick={() => {
-                    increaseQty(item)
-                  }}>+</button>
+            <div>
+              <h1>Shopping Cart</h1>
+              <h2>
+                Total: ${Total().totalPrice}
+              </h2>
+              <Link to="/cart">
+                <button className="editButton">EDIT CART</button>
+              </Link>
+              {visitorCart?.map((item) => (
+                <div key={item.id}>
+                  <h2>{item.name}</h2>
+                  <h2>${item.price}</h2>
+                  <h2>Qty: {item.quantity}</h2>
+                  <img src={item.imageUrl} />
                 </div>
-              )
-            }
-            )
-              : "No Items in Cart"
-            }
+              ))}
+            </div>
+
           </div>
           <div className="checkoutPayment">
             <form className="checkoutForm">
@@ -98,4 +93,4 @@ const Checkout = () => {
   )
 }
 
-export default Checkout;
+export default visitorCheckout;
