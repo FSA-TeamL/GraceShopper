@@ -33,4 +33,14 @@ router.put('/:id/:idx', async (req, res, next) => {
   }
 });
 
+router.delete('/:id/:idx', async (req, res, next) => {
+  try {
+    const cartitem = await CartItem.findByPk(req.params.idx);
+    const removedItem = await cartitem.destroy()
+    res.send(removedItem);
+  } catch (error) {
+    next(error)
+  }
+});
+
 module.exports = router;

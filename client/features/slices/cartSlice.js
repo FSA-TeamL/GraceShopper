@@ -1,16 +1,13 @@
 const { createAsyncThunk, createSlice } = require("@reduxjs/toolkit");
 import axios from "axios";
-export const fetchCartAsync = createAsyncThunk(
-  "cart/fetchAll",
-  async (id) => {
-    try {
-      const { data } = await axios.get(`http://localhost:3000/api/cart/${id}`);
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
+export const fetchCartAsync = createAsyncThunk("cart/fetchAll", async (id) => {
+  try {
+    const { data } = await axios.get(`http://localhost:3000/api/cart/${id}`);
+    return data;
+  } catch (err) {
+    console.log(err);
   }
-);
+});
 export const addToCartAsync = createAsyncThunk(
   "cart/add",
   async ({ quantity, cartId, productId }) => {
@@ -18,9 +15,11 @@ export const addToCartAsync = createAsyncThunk(
       await axios.post(`http://localhost:3000/api/cart/${cartId}`, {
         quantity,
         cartId,
-        productId
-      })
-      const { data } = await axios.get(`http://localhost:3000/api/cart/${cartId}`);
+        productId,
+      });
+      const { data } = await axios.get(
+        `http://localhost:3000/api/cart/${cartId}`
+      );
       return data;
     } catch (err) {
       console.log(err);
@@ -28,20 +27,39 @@ export const addToCartAsync = createAsyncThunk(
   }
 );
 
-export const adjustQtyAsync = createAsyncThunk("cart/increase", async (cartItem) => {
-  try {
-    const { id, quantity, cartId } = cartItem;
-    const updatedCartItemQty = { id, quantity, cartId };
-    await axios.put(
-      `http://localhost:3000/api/cart/${cartId}/${id}`, //if issue come back here
-      updatedCartItemQty
-    )
-    const { data } = await axios.get(`http://localhost:3000/api/cart/${cartId}`);
-    return data;
-  } catch(err) {
-    console.log(err);
+export const removeCartItemAsync = createAsyncThunk(
+  "cart/remove",
+  async ({ idx, cartId }) => {
+    try {
+      await axios.delete(`http://localhost:3000/api/cart/${cartId}/${idx}`);
+      const { data } = await axios.get(
+        `http://localhost:3000/api/cart/${cartId}`
+      );
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   }
-}
+);
+
+export const adjustQtyAsync = createAsyncThunk(
+  "cart/increase",
+  async (cartItem) => {
+    try {
+      const { id, quantity, cartId } = cartItem;
+      const updatedCartItemQty = { id, quantity, cartId };
+      await axios.put(
+        `http://localhost:3000/api/cart/${cartId}/${id}`, //if issue come back here
+        updatedCartItemQty
+      );
+      const { data } = await axios.get(
+        `http://localhost:3000/api/cart/${cartId}`
+      );
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
 );
 
 export const cartSlice = createSlice({
@@ -56,7 +74,10 @@ export const cartSlice = createSlice({
       return action.payload;
     });
     builder.addCase(adjustQtyAsync.fulfilled, (state, action) => {
-      return action.payload
+      return action.payload;
+    });
+    builder.addCase(removeCartItemAsync.fulfilled, (state, action) => {
+      return action.payload;
     });
   },
 });

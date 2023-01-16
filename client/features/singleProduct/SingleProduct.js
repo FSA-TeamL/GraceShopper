@@ -33,8 +33,8 @@ const SingleProduct = () => {
       </div>
       {isLoggedIn ? (<div>LOGGED IN</div>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
 
-
       {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
+
     </>
   );
 };
