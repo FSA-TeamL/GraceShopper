@@ -29,9 +29,9 @@ const AllProducts = () => {
   };
 
   return (
-    <>
+    <div className="allProductsBackground">
       {user && user.isAdmin === true ?  <AddProduct /> : <div></div>}
-      <h1 className="pageTitle">Products</h1>
+      <h1 className="pageTitle">Our Plants & More</h1>
       <div className="products">
         {products.map((product) => {
           return (
@@ -48,7 +48,7 @@ const AllProducts = () => {
                   }}
                 >
                   Add To Cart
-                </button>) : (<div>NOT LOGGED IN</div>)}
+                </button>) : (<div className="notLoggedIn">NOT LOGGED IN</div>)}
 
 
                 <button
@@ -62,7 +62,7 @@ const AllProducts = () => {
           );
         })}
       </div>
-    </>
+    </div>
   );
 };
 
