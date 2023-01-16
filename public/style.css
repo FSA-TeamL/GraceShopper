@@ -202,6 +202,21 @@ nav a {
   box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.checkoutCartHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editButton {
+  font-size: 12px;
+}
+
+.checkoutCartHeader > * {
+  margin: 0;
 }
 
 .checkoutProductContainer {
@@ -211,6 +226,10 @@ nav a {
   justify-content: center;
   flex-grow: 1;
   width: 50%;
+}
+
+.checkoutProductContainer > * {
+  margin: 0;
 }
 
 .checkoutPayment {
@@ -234,6 +253,15 @@ nav a {
 .checkoutButton {
   background-color: red;
 }
+
+/* ------------------------Confirmation-------------------- */
+.confirmation {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 
 /* ------------------------Footer-------------------- */
 

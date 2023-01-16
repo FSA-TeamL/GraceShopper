@@ -18,6 +18,9 @@ const AppRoutes = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
 
+  const id = useSelector((state) => state.auth.me.cartId);
+  console.log("APP ROUTES ID", id)
+
   useEffect(() => {
     dispatch(me());
   }, []);
@@ -27,7 +30,8 @@ const AppRoutes = () => {
 
       {isLoggedIn ? (
         <Routes>
-          <Route path="/usercart/:id" element={<UserCart />} />
+          <Route path={`/usercart/${id}`} element={<UserCart />} />
+          <Route path={`/checkout/${id}`} element={<UserCheckout />} />
           <Route path="/users" element={<Users />} />
         </Routes>
       ) : (
@@ -36,7 +40,7 @@ const AppRoutes = () => {
         </Routes>
         )}
         <Routes>
-          <Route path="/checkout/:id" element={<UserCheckout />} />
+
           <Route path="/visitorCheckout/:visitorId" element={<VisitorCheckout />} />
           <Route path="/confirmation" element={<Confirmation />} />
           <Route

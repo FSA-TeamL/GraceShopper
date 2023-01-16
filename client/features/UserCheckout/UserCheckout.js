@@ -8,12 +8,8 @@ import { useParams, Link } from 'react-router-dom';
 const UserCheckout = () => {
 
   const user = useSelector((state) => state.auth.me);
-  console.log("USER", user)
   const userCart = useSelector(selectCart);
-  console.log("USER CART", userCart);
-
-  const { id } = useParams();
-
+  const id = useSelector((state) => state.auth.me.cartId);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,17 +45,20 @@ const UserCheckout = () => {
 
         <div className="checkoutMain">
           <div className="checkoutCart">
-            <h1>Shopping Cart</h1>
-            <h2>Total: ${getCartTotal()}</h2>
-            <Link to={`/usercart/${id}`}>
-              <button className="editButton">EDIT CART</button>
-            </Link>
+            <div className="checkoutCartHeader">
+              <h1>Shopping Cart</h1>
+              <h3>Total: ${getCartTotal()}</h3>
+              <Link to={`/usercart/${id}`}>
+                <button className="editButton">EDIT CART</button>
+              </Link>
+            </div>
+
             {userCart && userCart.length ? userCart.map((item) => {
               return (
                 <div className="checkoutProductContainer" key={item.product.id}>
-                  <h2 className="productName">{item.product.name}</h2>
-                  <h2 className="productPrice">${item.product.price}</h2>
-                  <h2 className="productQty">Qty: {item.quantity}</h2>
+                  <h2 className="checkoutProductName">{item.product.name}</h2>
+                  <h4 className="checkoutProductPrice">${item.product.price}</h4>
+                  <h4 className="checkoutProductQty">Qty: {item.quantity}</h4>
                   <img src={item.product.imageUrl} />
                 </div>
               )
@@ -68,6 +67,7 @@ const UserCheckout = () => {
               : "No Items in Cart"
             }
           </div>
+
           <div className="checkoutPayment">
             <form className="checkoutForm">
               <h1>Payment Info</h1>
