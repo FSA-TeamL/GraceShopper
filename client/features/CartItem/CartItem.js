@@ -14,9 +14,16 @@ const CartItem = ({ item }) => {
         <h2>{item.name}</h2>
         <h2>${item.price}</h2>
         <h2>Qty: {item.quantity}</h2>
+        <div>
+          <button onClick={() => dispatch(incrementQuantity(item.id))}>
+            +
+          </button>
+          <button onClick={() => dispatch(decrementQuantity(item.id))}>
+            -
+          </button>
+          <button onClick={() => dispatch(removeItem(item))}>Remove</button>
+        </div>
         <img src={item.imageUrl} />
-        <button onClick={() => dispatch(incrementQuantity(item.id))}>+</button>
-        <button onClick={() => dispatch(decrementQuantity(item.id))}>-</button>
       </div>
     </>
   );
