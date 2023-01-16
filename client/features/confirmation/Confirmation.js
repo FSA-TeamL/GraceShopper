@@ -32,7 +32,8 @@ const Confirmation = () => {
 
   return (
     <>
-    <div>CONFIRMATION TESTING</div>
+    <h1>Thank you for your order!</h1>
+    <h2>Your order confirmation number is {Math.floor(Math.random() * (1000000000 - 100000000 + 1)) + 100000000} </h2>
       </>
   )
 }
