@@ -119,6 +119,75 @@ nav a {
   margin: 0 1rem;
 }
 
+/* ------------------------Checkout-------------------- */
+.checkout {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkoutHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 10px 0;
+}
+
+.checkoutTitle {
+  margin: 0;
+}
+
+.checkoutLoginSignup {
+  font-size: 12px;
+}
+
+.checkoutAuthButton {
+  font-size: 12px;
+}
+
+.checkoutMain {
+  display: flex;
+  margin: 0 20px 20px 20px;
+  padding-top: 10px;
+}
+
+.checkoutCart {
+  border: 1px solid black;
+  border-radius: 2%;
+  box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkoutProductContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.checkoutPayment {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+}
+
+.checkoutForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 2%;
+  border: 1px solid black;
+  box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
+  width: 50%;
+  height: 50%;
+}
+
+.checkoutButton {
+  background-color: red;
+}
 
 /* ------------------------Footer-------------------- */
 
@@ -128,5 +197,5 @@ nav a {
   display: flex;
   height: 7rem;
   background-color: rgb(197, 197, 197);
-  position: fixed;
+  position: sticky;
 }

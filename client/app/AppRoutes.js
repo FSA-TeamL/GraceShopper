@@ -8,6 +8,7 @@ import AuthForm from "../features/auth/AuthForm";
 import Home from "../features/home/Home";
 import { me } from "./store";
 import VisitorCart from "../features/VisitorCart";
+import Checkout from "../features/checkout/Checkout";
 
 
 const AppRoutes = () => {
@@ -31,6 +32,7 @@ const AppRoutes = () => {
         </Routes>
         )}
         <Routes>
+          <Route path="/checkout/:id" element={<Checkout />} />
           <Route
             path="/*"
             element={<AuthForm name="login" displayName="Login" />}

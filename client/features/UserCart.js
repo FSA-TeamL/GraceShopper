@@ -9,7 +9,7 @@ const UserCart = () => {
   const user = useSelector((state) => state.auth.me);
 
   const cart = useSelector(selectCart);
-  console.log(cart)
+  console.log("USER CART CART", cart)
   const {id} = useParams();
 
   const dispatch = useDispatch();
