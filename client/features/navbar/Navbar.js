@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <div className='header'>
-      <h1 className='siteTitle'>Welcome to the Store</h1>
+      <h1 className='siteTitle'>Welcome to the Plants Unlimited!</h1>
       <nav>
         {isLoggedIn ? (
           <div>
