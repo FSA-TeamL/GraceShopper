@@ -34,11 +34,6 @@ const AppRoutes = () => {
           <Route path="/cart" element={<VisitorCart />} />
         </Routes>
         )}
-             {/* {user && user.isAdmin  ? (
-        <Routes>
-          <Route path="/users" element={<Users />} />
-        </Routes>
-      )} */}
         <Routes>
           <Route path="/checkout/:id" element={<Checkout />} />
           <Route path="/confirmation" element={<Confirmation />} />

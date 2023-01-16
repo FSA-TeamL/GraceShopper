@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 
 const Users = () => {
   const users = useSelector(selectUsers);
-  console.log("this is what we get for users", users)
+  console.log("this is what we get for users", users);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,31 +21,32 @@ const Users = () => {
 
   return (
     <>
-    <div>Hello</div>
-
-    <div className="allProductsBackground">
-    <table>        
-      <thead>
-              <tr>
-                <th>User ID</th>
-                <th>Username/Email</th>           
-              </tr>
-        </thead>
-        <tbody>
-      {user && user.isAdmin === true ?  <div>
-              {users.map((user) => {
-                return (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.username}</td>
-                  </tr>
-                );
-              })}
+      <div className="allProductsBackground">
+        {user && user.isAdmin === true ? (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th>User ID</th>
+                  <th>Username/Email</th>
+                </tr>
+              </thead>
+              <tbody>
+                {users.map((user) => {
+                  return (
+                    <tr key={user.id}>
+                      <td>{user.id}</td>
+                      <td>{user.username}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
-      : <div></div>}
-      </tbody>
-        </table>
-    </div>
     </>
   );
 };
