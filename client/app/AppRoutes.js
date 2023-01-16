@@ -9,6 +9,7 @@ import Home from "../features/home/Home";
 import { me } from "./store";
 import VisitorCart from "../features/VisitorCart";
 import Checkout from "../features/checkout/Checkout";
+import Confirmation from "../features/confirmation/Confirmation";
 
 
 const AppRoutes = () => {
@@ -33,6 +34,7 @@ const AppRoutes = () => {
         )}
         <Routes>
           <Route path="/checkout/:id" element={<Checkout />} />
+          <Route path="/confirmation" element={<Confirmation />} />
           <Route
             path="/*"
             element={<AuthForm name="login" displayName="Login" />}
