@@ -62,4 +62,4 @@ export const singleProductSlice = createSlice({
 
 export const selectSingleProduct = (state) => state.product;
 
-export default singleProductSlice.reducer;
+export default singleProductSlice.reducer
