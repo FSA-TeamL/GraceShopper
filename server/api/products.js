@@ -32,4 +32,25 @@ router.put('/:id', async (req, res, next) => {
   }
 });
 
+//POST /api/products
+router.post("/", async (req, res, next) => {
+  try {
+    res.status(201).send(await Product.create(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+// DELETE /api/products/:id
+router.delete("/:id", async (req, res, next) => {
+  try {
+    console.log("THIS IS THE REQ", req.params.id);
+    const product = await Product.findByPk(req.params.id);
+    await product.destroy();
+    res.send(product);
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;
