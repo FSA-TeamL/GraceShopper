@@ -14,11 +14,13 @@ const Navbar = () => {
   };
 
   const id = useSelector((state) => state.auth.me.cartId);
+  const username = useSelector((state) => state.auth.me.username)
 
 
   return (
     <div className='header'>
       <h1 className='siteTitle'>Welcome to the Plants Unlimited!</h1>
+      <small>Shopping as: <strong>{username || "Guest"}</strong></small>
       <nav>
         {isLoggedIn ? (
           <div>

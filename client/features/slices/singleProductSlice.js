@@ -29,22 +29,6 @@ export const editProductAsync = createAsyncThunk(
   }
 );
 
-export const addProductAsync = createAsyncThunk(
-  "product/add",
-  async (product) => {
-    console.log("this is product in the add thunk", product)
-    const { id, name, description, imageUrl, price } = product;
-    const { data } = await axios.post("http://localhost:3000/api/products", {
-      id,
-      name,
-      description,
-      imageUrl,
-      price,
-    });
-    return data;
-  }
-);
-
 export const deleteProductAsync = createAsyncThunk(
   "product/delete",
   async (id) => {
@@ -70,9 +54,6 @@ export const singleProductSlice = createSlice({
     builder.addCase(editProductAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    builder.addCase(addProductAsync.fulfilled, (state, action) => {
-      return action.payload;
-    });
     builder.addCase(deleteProductAsync.fulfilled, (state, action) => {
       return action.payload;
     });
@@ -81,4 +62,4 @@ export const singleProductSlice = createSlice({
 
 export const selectSingleProduct = (state) => state.product;
 
-export default singleProductSlice.reducer;
+export default singleProductSlice.reducer

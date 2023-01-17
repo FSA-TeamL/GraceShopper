@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  fetchSingleProductAsync,
-  addProductAsync,
-  selectSingleProduct,
-} from "../slices/singleProductSlice";
+import { useDispatch } from "react-redux";
+import { addProductAsync } from "../slices/allProductsSlice";
 import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  const product = useSelector(selectSingleProduct);
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -22,9 +16,15 @@ const AddProduct = () => {
     evt.preventDefault();
     const newProduct = { name, description, price, imageurl };
     await dispatch(addProductAsync(newProduct));
-    navigate(`/products/${evt.target.value}`);
+    navigate("/products")
   };
 
+  // useEffect(() => {
+  //   setName = "";
+  //   setDescription = "";
+  //   setPrice = ""
+  //   setImageurl = ""
+  // }, [dispatch]);
 
   return (
     <>

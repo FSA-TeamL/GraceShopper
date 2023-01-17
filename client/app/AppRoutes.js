@@ -10,6 +10,7 @@ import { me } from "./store";
 import VisitorCart from "../features/VisitorCart";
 import Checkout from "../features/checkout/Checkout";
 import Confirmation from "../features/confirmation/Confirmation";
+import Users from "../features/users/Users"
 
 
 const AppRoutes = () => {
@@ -26,6 +27,7 @@ const AppRoutes = () => {
       {isLoggedIn ? (
         <Routes>
           <Route path="/usercart/:id" element={<UserCart />} />
+          <Route path="/users" element={<Users />} />
         </Routes>
       ) : (
         <Routes>

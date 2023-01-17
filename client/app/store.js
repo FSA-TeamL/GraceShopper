@@ -5,6 +5,7 @@ import productsReducer from "../features/slices/allProductsSlice";
 import singleProductReducer from "../features/slices/singleProductSlice";
 import cartReducer from "../features/slices/cartSlice";
 import cartsReducer from "../features/slices/allCartSlice"
+import usersReducer from "../features/users/UsersSlice"
 
 const store = configureStore({
   reducer: {
@@ -12,7 +13,8 @@ const store = configureStore({
     products: productsReducer,
     product: singleProductReducer,
     cart: cartReducer,
-    cart2: cartsReducer
+    cart2: cartsReducer,
+    users: usersReducer
   },
   // testing it without the logger
   // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
