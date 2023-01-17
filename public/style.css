@@ -202,21 +202,41 @@ nav a {
   box-shadow: 10px -2px 20px 2px rgb(0 0 0 / 30%);
   display: flex;
   flex-wrap: wrap;
+  justify-content:flex-start;
+  width: 60%;
+}
+
+.checkoutCartHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editButton {
+  font-size: 12px;
+}
+
+.checkoutCartHeader > * {
+  margin: 0;
 }
 
 .checkoutProductContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  flex-grow: 1;
-  width: 50%;
+  align-items:flex-start;
+  width: 23%;
+  margin: 20px 0 10px 10px;
+}
+
+.checkoutProductContainer > * {
+  margin: 0;
 }
 
 .checkoutPayment {
   display: flex;
   justify-content: center;
-  width: 50%;
+  width: 40%;
 }
 
 .checkoutForm {
@@ -231,9 +251,22 @@ nav a {
   height: 350px;
 }
 
+.paymentHeader {
+  margin-top: 5px;
+}
+
 .checkoutButton {
   background-color: red;
 }
+
+/* ------------------------Confirmation-------------------- */
+.confirmation {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
 
 /* ------------------------Footer-------------------- */
 
@@ -243,7 +276,7 @@ nav a {
   display: flex;
   height: 5rem;
   background-color: darkcyan;
-  position: fixed;
+  position: sticky;
   padding: 10px;
   font-size: 1.5rem;
 }
