@@ -7,7 +7,7 @@ import {
 import { useDispatch } from "react-redux";
 
 const CartItem = ({ item }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   
   return (
     <>
