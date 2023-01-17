@@ -1,9 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import CartItem from "./CartItem/CartItem";
 
 const VisitorCart = () => {
   const cart = useSelector((state) => state.cart2);
+  const visitorId = cart.id;
+ 
+
 
   const Total = () => {
     let totalQuantity = 0;
@@ -29,6 +33,7 @@ const VisitorCart = () => {
           Total {Total().totalQuantity} items: ${Total().totalPrice}
         </p>
       </div>
+      <Link to={`/visitorCheckout/${visitorId}`}><button>Checkout</button> </Link>
     </>
   );
 };
