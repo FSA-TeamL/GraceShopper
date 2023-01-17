@@ -1,12 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartItem from "./CartItem/CartItem";
 
 const VisitorCart = () => {
   const cart = useSelector((state) => state.cart2);
   const visitorId = cart.id;
- 
 
 
   const Total = () => {
@@ -15,7 +14,7 @@ const VisitorCart = () => {
     cart.forEach((item) => {
       totalQuantity += item.quantity;
       totalPrice += item.price * item.quantity;
-    });
+    } );
     return { totalPrice, totalQuantity };
   };
 
