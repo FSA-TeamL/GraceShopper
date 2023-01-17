@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
+  
   return (
     <>
       <div>
@@ -21,7 +22,7 @@ const CartItem = ({ item }) => {
           <button onClick={() => dispatch(decrementQuantity(item.id))}>
             -
           </button>
-          <button onClick={() => dispatch(removeItem(item))}>Remove</button>
+          <button onClick={() => dispatch(removeItem(item.id))}>Remove</button>
         </div>
         <img src={item.imageUrl} />
       </div>
