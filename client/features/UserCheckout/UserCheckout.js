@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCartAsync, selectCart, adjustQtyAsync } from '../slices/cartSlice'
-import { useParams, Link } from 'react-router-dom';
+import { fetchCartAsync, selectCart } from '../slices/cartSlice'
+import { Link } from 'react-router-dom';
 
 
 
 const UserCheckout = () => {
 
-  const user = useSelector((state) => state.auth.me);
   const userCart = useSelector(selectCart);
   const id = useSelector((state) => state.auth.me.cartId);
   const dispatch = useDispatch();
@@ -52,7 +51,6 @@ const UserCheckout = () => {
                 <button className="editButton">EDIT CART</button>
               </Link>
             </div>
-
             {userCart && userCart.length ? userCart.map((item) => {
               return (
                 <div className="checkoutProductContainer" key={item.product.id}>
@@ -70,7 +68,7 @@ const UserCheckout = () => {
 
           <div className="checkoutPayment">
             <form className="checkoutForm">
-              <h1>Payment Info</h1>
+              <h1 className="paymentHeader">Payment Info</h1>
               <div>
                 <label htmlFor="name">Billing Name</label>
                 <input name="name" type="text" placeholder="Billing Name"></input>

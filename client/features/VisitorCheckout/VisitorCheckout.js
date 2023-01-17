@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, Link } from 'react-router-dom';
-import CartItem from '../CartItem/CartItem';
+
 
 
 const visitorCheckout = () => {
 
   const visitorCart = useSelector((state) => state.cart2);
-  console.log("VISITOR CART", visitorCart)
-
-  const { id } = useParams();
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchCartAsync(id));
-  // }, [dispatch]);
 
   const Total = () => {
     let totalQuantity = 0;
@@ -47,28 +38,30 @@ const visitorCheckout = () => {
 
         <div className="checkoutMain">
           <div className="checkoutCart">
-            <div>
+            <div className="checkoutCartHeader">
               <h1>Shopping Cart</h1>
-              <h2>
+              <h3>
                 Total: ${Total().totalPrice}
-              </h2>
+              </h3>
               <Link to="/cart">
                 <button className="editButton">EDIT CART</button>
               </Link>
-              {visitorCart?.map((item) => (
-                <div key={item.id}>
+            </div>
+            {visitorCart?.map((item) => {
+              return (
+                <div className="checkoutProductContainer" key={item.id}>
                   <h2>{item.name}</h2>
-                  <h2>${item.price}</h2>
-                  <h2>Qty: {item.quantity}</h2>
+                  <h4>${item.price}</h4>
+                  <h4>Qty: {item.quantity}</h4>
                   <img src={item.imageUrl} />
                 </div>
-              ))}
-            </div>
+              )
+            })}
 
           </div>
           <div className="checkoutPayment">
             <form className="checkoutForm">
-              <h1>Payment Info</h1>
+              <h1 className="paymentHeader">Payment Info</h1>
               <div>
                 <label htmlFor="name">Billing Name</label>
                 <input name="name" type="text" placeholder="Billing Name"></input>

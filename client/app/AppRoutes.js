@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import AllProducts from "../features/allProduct/AllProducts";
 import SingleProduct from "../features/singleProduct/SingleProduct";
 import UserCart from "../features/UserCart";
@@ -37,29 +37,25 @@ const AppRoutes = () => {
       ) : (
         <Routes>
           <Route path="/cart" element={<VisitorCart />} />
-        </Routes>
-        )}
-        <Routes>
-
           <Route path="/visitorCheckout/:visitorId" element={<VisitorCheckout />} />
-          <Route path="/confirmation" element={<Confirmation />} />
-          <Route
-            path="/*"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/login"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/signup"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
-          />
-          <Route path="/products" element={<AllProducts />} />
-          <Route path="/products/:productId" element={<SingleProduct />} />
-          <Route path="/*" element={<AllProducts />} />
-          <Route to="/home" element={<AllProducts />} />
         </Routes>
+      )}
+
+      <Routes>
+        <Route exact path="/" element={<Navigate to="/products" />} />
+        <Route exact path="/home" element={<Navigate to="/products" />} />
+        <Route path="/products" element={<AllProducts />} />
+        <Route path="/products/:productId" element={<SingleProduct />} />
+        <Route
+          path="/login"
+          element={<AuthForm name="login" displayName="Login" />}
+        />
+        <Route
+          path="/signup"
+          element={<AuthForm name="signup" displayName="Sign Up" />}
+        />
+        <Route path="/confirmation" element={<Confirmation />} />
+      </Routes>
     </div>
   );
 };

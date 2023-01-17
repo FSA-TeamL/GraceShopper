@@ -7,10 +7,8 @@ import { Link, useParams } from 'react-router-dom';
 const UserCart = () => {
 
   const user = useSelector((state) => state.auth.me);
-  console.log("USER", user)
 
   const cart = useSelector(selectCart);
-  console.log("USER CART CART", cart)
   const id = useSelector((state) => state.auth.me.cartId);
 
   const dispatch = useDispatch();
