@@ -22,7 +22,7 @@ const visitorCheckout = () => {
           <h1 className="checkoutTitle">CHECKOUT</h1>
           <div className="checkoutLoginSignup">
             <div className="checkoutLogin">
-              <span>Already have an accout?</span>
+              <span>Already have an account?</span>
               <Link to={"/login"}>
                 <button className="checkoutAuthButton">Log In</button>
               </Link>
@@ -65,6 +65,7 @@ const visitorCheckout = () => {
                   name="name"
                   type="text"
                   placeholder="Billing Name"
+                  required="required"
                 ></input>
               </div>
               <div>
@@ -73,6 +74,7 @@ const visitorCheckout = () => {
                   name="billingAddress"
                   type="text"
                   placeholder="Billing Address"
+                  required="required"
                 ></input>
               </div>
               <div>
@@ -81,6 +83,7 @@ const visitorCheckout = () => {
                   name="creditCard"
                   type="text"
                   placeholder="Last 4 of Credit Card"
+                  required="required"
                 ></input>
               </div>
               <Link to="/confirmation">
