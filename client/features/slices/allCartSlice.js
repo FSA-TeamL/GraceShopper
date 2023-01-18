@@ -15,12 +15,12 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("local", JSON.stringify(state))
     },
-    incrementQuantity(state, action) {
+    increase(state, action) {
       const item = state.find((item) => item.id === action.payload);
       item.quantity++;
       localStorage.setItem("local", JSON.stringify(state))
     },
-    decrementQuantity(state, action) {
+    decrease(state, action) {
       const item = state.find((item) => item.id === action.payload);
       if (item.quantity === 1) {
         item.quantity = 1;
@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("local", JSON.stringify(state))
     },
-    removeItem: (state, action) => {
+    remove: (state, action) => {
       const filteredItems = state.filter((item) => item.id !== action.payload);
       localStorage.setItem("local", JSON.stringify(filteredItems))
       return filteredItems;
@@ -38,5 +38,5 @@ const cartSlice = createSlice({
 });
 export default cartSlice.reducer;
 
-export const { addToCart, incrementQuantity, decrementQuantity, removeItem } =
+export const { addToCart, increase, decrease, remove } =
   cartSlice.actions;
