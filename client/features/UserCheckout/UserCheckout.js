@@ -57,7 +57,7 @@ const UserCheckout = () => {
                   <h2 className="checkoutProductName">{item.product.name}</h2>
                   <h4 className="checkoutProductPrice">${item.product.price}</h4>
                   <h4 className="checkoutProductQty">Qty: {item.quantity}</h4>
-                  <img src={item.product.imageUrl} />
+                  <img className="productImage" src={item.product.imageUrl} />
                 </div>
               )
             }

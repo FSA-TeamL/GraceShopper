@@ -46,7 +46,7 @@ const SingleProduct = () => {
         return dispatch(adjustQtyAsync(item))
       }
     }
-   
+
     // else push to cart
     let quantity = 1;
     let cartId = user.cartId;
@@ -56,7 +56,7 @@ const SingleProduct = () => {
 
   return (
     <>
-      <img src={product.imageUrl} />
+      <img className="productImage" src={product.imageUrl} />
       <div>
         <div>{product.name}</div>
         <div>${product.price}</div>

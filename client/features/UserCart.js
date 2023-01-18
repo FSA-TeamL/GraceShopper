@@ -64,7 +64,7 @@ const UserCart = () => {
             } else {
               return (
                 <div className="cartItemContainer" key={item.product.id}>
-                  <img src={item.product.imageUrl} className="cartItemImage" />
+                  <img className="productImage" src={item.product.imageUrl} />
                   <h2 className="cartItemName">{item.product.name}</h2>
                   <h2 className="cartItemPrice">${item.product.price}</h2>
                   <h2 className="cartItemQty">Qty: {item.quantity}</h2>
