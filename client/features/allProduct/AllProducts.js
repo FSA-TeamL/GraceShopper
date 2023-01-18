@@ -74,9 +74,9 @@ const AllProducts = () => {
                     addToUserCart(product);
                   }}
                 >
-                  User Add To Cart
+                Add To Cart
                 </button>) :
-                 (<button onClick={() => dispatch(addToCart(product))}> Visitor Add to Cart</button>)}
+                 (<button className="productButton" onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
 
 
                   <button
