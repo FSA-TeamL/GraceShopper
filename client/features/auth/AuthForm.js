@@ -38,7 +38,7 @@ const AuthForm = ({ name, displayName }) => {
       console.log("CartId", cartId)
       let quantity = item.quantity
       dispatch(addToCartAsync({quantity, cartId, productId}))
-    
+      dispatch(remove(productId))
       //dispatch map through the Visitor cart to remove
     }))
       navigate("/products")
@@ -51,8 +51,6 @@ const AuthForm = ({ name, displayName }) => {
     const password = evt.target.password.value;
     await dispatch(authenticate({ username, password, method: formName }));
     console.log("This is user in the handleSubmit", user)
-    // addToUserCart();
-
   };
 
 
