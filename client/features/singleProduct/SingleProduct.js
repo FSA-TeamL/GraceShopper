@@ -62,20 +62,6 @@ const SingleProduct = () => {
 
   return (
     <>
-      <img className="productImage" src={product.imageUrl} />
-      <div>
-        <div>{product.name}</div>
-        <div>${product.price}</div>
-        <div>{product.description}</div>
-      </div>
-      {isLoggedIn ? (<button
-        className="productButton"
-        onClick={() => {
-          addToUserCart(product);
-        }}
-      >
-        User Add To Cart
-      </button>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
       <div className="singleProductContainer">
         <h1 className="productName">{product.name}</h1>
         <div className="singleImage">
