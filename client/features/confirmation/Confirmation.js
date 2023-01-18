@@ -36,9 +36,20 @@ const Confirmation = () => {
         <h1>Thank you for your order!</h1>
         <h2>Your order confirmation number is {Math.floor(Math.random() * (1000000000 - 100000000 + 1)) + 100000000}. </h2>
       </div>
-
+      <div className="confirmation">
+        <h2>Order Summary:</h2>
+        <div>
+          {cart?.map((item) => (
+            <div key={item.id}>
+              <h3>{item.product.name}</h3>
+              <p>Quantity: {item.quantity}</p>
+              <p>Price: ${item.product.price}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
 export default Confirmation;
