@@ -12,8 +12,6 @@ const AllProducts = () => {
   let { id } = useParams();
   let cart = useSelector(selectCart)
 
-  // console.log("here is the user", user)
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,7 +37,7 @@ const AllProducts = () => {
         return dispatch(adjustQtyAsync(item))
       }
     }
-   
+
     // else push to cart
     let quantity = 1;
     let cartId = user.cartId;
@@ -69,7 +67,6 @@ const AllProducts = () => {
                   User Add To Cart
                 </button>) :
                  (<button onClick={() => dispatch(addToCart(product))}> Visitor Add to Cart</button>)}
-
 
                 <button
                   className="productButton"

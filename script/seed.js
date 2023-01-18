@@ -44,7 +44,6 @@ async function seed() {
     User.create({ username: "user1@email.com", password: "password", addressLine1: '1 Main St.', city: 'New York', state: 'NY', zip: '12345-1234', cartId:1}),
     User.create({ username: "user2@email.com", password: "password", addressLine1: '1 Main St.', city: 'New York', state: 'NY', zip: '12345-1234', cartId:2}),
     User.create({ username: 'admin@email.com', password: 'password', isAdmin:true, addressLine1: '1 Main St.', city: 'New York', state: 'NY', zip: '12345-1234'})
-
   ]);
 
 
