@@ -26,6 +26,10 @@ const AddProduct = () => {
   //   setImageurl = ""
   // }, [dispatch]);
 
+  //if the values in each input are empty/null then the submit button will give an alert
+
+
+
   return (
     <>
       <h2>Add New Product Information: </h2>
@@ -35,26 +39,30 @@ const AddProduct = () => {
           name="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required="required"
         />
         <label htmlFor="addProduct">Description: </label>
         <input
           description="Description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          required="required"
         />
         <label htmlFor="addProduct">ImageUrl: </label>
         <input
           imageurl="imageurl"
           value={imageurl}
           onChange={(e) => setImageurl(e.target.value)}
+          required="required"
         />
         <label htmlFor="addProduct">Price: </label>
         <input
           price="Price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+          required="required"
         />
-        <button type="submit" className="editProductButton">
+        <button type="submit" className="editProductButton" onClick={()=> alert("Product Added!")}>
           Submit{" "}
         </button>
       </form>
