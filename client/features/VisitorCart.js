@@ -7,6 +7,8 @@ const VisitorCart = () => {
   const cart = useSelector((state) => state.cart2);
   const visitorId = cart.id;
 
+ 
+  console.log("This is the visitor cart", cart);
 
   const Total = () => {
     let totalQuantity = 0;
