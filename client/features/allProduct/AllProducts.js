@@ -31,10 +31,10 @@ const AllProducts = () => {
 
   const addToUserCart = async (product) => {
     // if product.id === cart.item.product.id is already in the Object, then increase quantity
-    for(let i=0; i<cart.length; i++){
-      let item = {...cart[i]}
+    for (let i = 0; i < cart.length; i++) {
+      let item = { ...cart[i] }
       console.log("the cart item", item)
-      if(item.productId === product.id){
+      if (item.productId === product.id) {
         item.quantity++
         return dispatch(adjustQtyAsync(item))
       }
@@ -44,45 +44,48 @@ const AllProducts = () => {
     let quantity = 1;
     let cartId = user.cartId;
     let productId = product.id;
-    dispatch(addToCartAsync({ quantity, cartId, productId }));
+    let imageUrl = product.imageUrl;
+    dispatch(addToCartAsync({ quantity, cartId, productId, imageUrl }));
   };
 
   return (
-    <div className="allProductsBackground">
-      {user && user.isAdmin === true ?  <AddProduct /> : <div></div>}
-      <h1 className="pageTitle">Our Plants & More</h1>
-      <div className="products">
-        {products.map((product) => {
-          return (
-            <div className="productContainer" key={product.id}>
-              <h2 className="productName">{product.name}</h2>
-              <h2 className="productPrice">${product.price}</h2>
-              <img className="productImage" src={product.imageUrl} />
-              <div className="productButtonContainer">
+    <>
+      <div className="allProductsBackground">
+        {user && user.isAdmin === true ? <AddProduct /> : <div></div>}
+        <h1 className="pageTitle">Our Plants & More</h1>
+        <div className="products">
+          {products.map((product) => {
+            return (
+              <div className="productContainer" key={product.id}>
+                <h2 className="productName">{product.name}</h2>
+                <h2 className="productPrice">${product.price}</h2>
+                <img className="productImage" src={product.imageUrl} />
+                <div className="productButtonContainer">
 
-                {isLoggedIn ? (<button
-                  className="productButton"
-                  onClick={() => {
-                    addToUserCart(product);
-                  }}
-                >
-                  User Add To Cart
-                </button>) :
-                 (<button onClick={() => dispatch(addToCart(product))}> Visitor Add to Cart</button>)}
+                  {isLoggedIn ? (<button
+                    className="productButton"
+                    onClick={() => {
+                      addToUserCart(product);
+                    }}
+                  >
+                    User Add To Cart
+                  </button>) :
+                    (<button onClick={() => dispatch(addToCart(product))}> Visitor Add to Cart</button>)}
 
 
-                <button
-                  className="productButton"
-                  onClick={() => navigate(`/products/${product.id}`)}
-                >
-                  Details
-                </button>
+                  <button
+                    className="productButton"
+                    onClick={() => navigate(`/products/${product.id}`)}
+                  >
+                    Details
+                  </button>
+                </div>
               </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
+            );
+          })}
+        </div>
+      </div></>
+
   );
 };
 

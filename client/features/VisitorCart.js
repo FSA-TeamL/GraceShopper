@@ -5,6 +5,7 @@ import CartItem from "./CartItem/CartItem";
 
 const VisitorCart = () => {
   const cart = useSelector((state) => state.cart2);
+  console.log("CURT", cart)
   const visitorId = cart.id;
 
   const Total = () => {

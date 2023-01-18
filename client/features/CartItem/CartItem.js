@@ -11,6 +11,7 @@ const CartItem = ({ item }) => {
 
   return (
     <>
+    {console.log("VISITOR CART ITEM", item)}
       <div className="cartItemContainer">
       <img className="productImage" src={item.imageUrl} />
         <h2 className="cartItemName">{item.name}</h2>

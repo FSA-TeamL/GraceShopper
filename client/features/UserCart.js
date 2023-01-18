@@ -10,8 +10,8 @@ import { Link, useParams } from "react-router-dom";
 
 const UserCart = () => {
   const user = useSelector((state) => state.auth.me);
-
   const cart = useSelector(selectCart);
+  console.log("USER CART", cart)
   const id = useSelector((state) => state.auth.me.cartId);
 
   const dispatch = useDispatch();
@@ -56,9 +56,10 @@ const UserCart = () => {
   getCartTotal();
 
   return (
-    <div className="cart">
-      {cart && cart.length
-        ? cart.map((item) => {
+    <>
+      <div className="cart">
+        {cart && cart.length
+          ? cart.map((item) => {
             if (item.quantity < 1) {
               handleRemove(item);
             } else {
@@ -95,12 +96,13 @@ const UserCart = () => {
               );
             }
           })
-        : "No Items in Cart"}
-      <h1>Total: ${getCartTotal()}</h1>
-      <Link to={`/checkout/${id}`}>
-        <button>Checkout</button>{" "}
-      </Link>
-    </div>
+          : "No Items in Cart"}
+        <h1>Total: ${getCartTotal()}</h1>
+        <Link to={`/checkout/${id}`}>
+          <button>Checkout</button>{" "}
+        </Link>
+      </div></>
+
   );
 };
 

@@ -19,7 +19,7 @@ async function seed() {
 
   let plantPrices = [23.99, 34.99, 21.99, 15.99, 81.99, 9.99, 12.99, 14.99, 14.99, 75.99];
 
-  let plantImages = ["agave", "azalea", "cactus", "hibiscus", "maple", "marigold", "orchid", "rose", "sunflower", "willow"];
+  let plantImages = ["https://i.postimg.cc/qMCjpYHs/agave.png", "https://i.postimg.cc/vZrhVVBD/azalea.png", "https://i.postimg.cc/pLbkrZPg/cactus.png", "https://i.postimg.cc/mrVSdW7s/hibiscus.png", "https://i.postimg.cc/tRsLVBHT/maple.png", "https://i.postimg.cc/9fcptQRb/marigold.png", "https://i.postimg.cc/xCC3hpPb/orchid.png", "https://i.postimg.cc/dDMR7sc8/rose.png", "https://i.postimg.cc/1tjrQ0W7/sunflower.png", "https://i.postimg.cc/8cfBPF9p/willow.png"];
 
   for (let i = 0; i < plantNames.length; i++) {
 
@@ -27,7 +27,7 @@ async function seed() {
       name: plantNames[i],
       description: plantDescriptions[i],
       price: plantPrices[i],
-      imageUrl: `images/${plantImages[i]}.png`
+      imageUrl: plantImages[i]
     });
   }
 
