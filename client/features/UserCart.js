@@ -57,6 +57,7 @@ const UserCart = () => {
 
   return (
     <div className="cart">
+        <h1>Shopping Cart</h1>
       {cart && cart.length
         ? cart.map((item) => {
             if (item.quantity < 1) {
@@ -84,7 +85,8 @@ const UserCart = () => {
                   >
                     +
                   </button>
-                  <button className="cartItemRemoveButton"
+                  <button
+                    className="cartItemRemoveButton"
                     onClick={() => {
                       handleRemove(item);
                     }}
@@ -96,9 +98,11 @@ const UserCart = () => {
             }
           })
         : "No Items in Cart"}
+      <h2>ORDER SUMMARY</h2>
+
       <h1>Total: ${getCartTotal()}</h1>
       <Link to={`/checkout/${id}`}>
-        <button>Checkout</button>{" "}
+        <button>Checkout</button>
       </Link>
     </div>
   );
