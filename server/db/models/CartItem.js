@@ -6,6 +6,7 @@ const CartItem = db.define('cartitem', {
     type: Sequelize.INTEGER,
     primaryKey:true,
     autoIncrement: true,
+    allowNull: false,
   },
   quantity: {
     type: Sequelize.INTEGER,

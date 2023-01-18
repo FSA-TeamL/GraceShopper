@@ -28,9 +28,9 @@ const VisitorCart = () => {
       </div>
       <h2>ORDER SUMMARY</h2>
       <div>
-        <p>
-          Total {Total().totalQuantity} items: ${Total().totalPrice}
-        </p>
+        <h1>
+          Total: ${Total().totalPrice}
+        </h1>
       </div>
       <Link to={`/visitorCheckout/${visitorId}`}><button>Checkout</button> </Link>
     </>

@@ -5,9 +5,18 @@ import {
   fetchSingleProductAsync,
   selectSingleProduct,
 } from "../slices/singleProductSlice";
-import { fetchProductsAsync, selectProducts, addProductAsync } from "../slices/allProductsSlice";
+import {
+  fetchProductsAsync,
+  selectProducts,
+  addProductAsync,
+} from "../slices/allProductsSlice";
 import EditProduct from "../editProduct/EditProduct";
-import { fetchCartAsync, addToCartAsync, adjustQtyAsync, selectCart } from "../slices/cartSlice";
+import {
+  fetchCartAsync,
+  addToCartAsync,
+  adjustQtyAsync,
+  selectCart,
+} from "../slices/cartSlice";
 import { addToCart } from "../slices/allCartSlice";
 
 const SingleProduct = () => {
@@ -15,35 +24,32 @@ const SingleProduct = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
   const dispatch = useDispatch();
   const product = useSelector(selectSingleProduct);
-  let cart = useSelector(selectCart)
+  let cart = useSelector(selectCart);
   const { productId } = useParams();
 
-
   console.log("SINGLE PRODUCT COMPONENT", product);
-  console.log("user", user)
-
-
+  console.log("user", user);
 
   useEffect(() => {
     dispatch(fetchSingleProductAsync(productId));
-    dispatch(fetchCartAsync(user.id))
+    dispatch(fetchCartAsync(user.id));
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchCartAsync(user.id))
+    dispatch(fetchCartAsync(user.id));
   }, [user]);
 
   const addToUserCart = async (product) => {
-    console.log("This is cart", cart)
-    console.log("This is product", product)
+    console.log("This is cart", cart);
+    console.log("This is product", product);
 
     // if product.id === cart.item.product.id is already in the Object, then increase quantity
-    for(let i=0; i<cart.length; i++){
-      let item = {...cart[i]}
-      console.log("the cart item", item)
-      if(item.productId === product.id){
-        item.quantity++
-        return dispatch(adjustQtyAsync(item))
+    for (let i = 0; i < cart.length; i++) {
+      let item = { ...cart[i] };
+      console.log("the cart item", item);
+      if (item.productId === product.id) {
+        item.quantity++;
+        return dispatch(adjustQtyAsync(item));
       }
     }
 
@@ -63,16 +69,41 @@ const SingleProduct = () => {
         <div>{product.description}</div>
       </div>
       {isLoggedIn ? (<button
-                  className="productButton"
-                  onClick={() => {
-                    addToUserCart(product);
-                  }}
-                >
-                  User Add To Cart
-                </button>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
+        className="productButton"
+        onClick={() => {
+          addToUserCart(product);
+        }}
+      >
+        User Add To Cart
+      </button>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
+      <div className="singleProductContainer">
+        <h1 className="productName">{product.name}</h1>
+        <div className="singleImage">
+          <img src={product.imageUrl} width="300" height="300" />
+          <div className="singleDescription">
+            <h3>{product.description}</h3>
+            <h2>${product.price}</h2>
+            {isLoggedIn ? (
+              <button
+                className="productButton"
+                onClick={() => {
+                  addToUserCart(product);
+                }}
+              >
+                Add To Cart
+              </button>
+            ) : (
+              <button className="productButton" onClick={() => dispatch(addToCart(product))}>
+                Add to Cart
+              </button>
+            )}
 
-      {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
+            {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
+          </div>
+        </div>
 
+
+      </div>
     </>
   );
 };
