@@ -14,7 +14,7 @@ const Navbar = () => {
   };
 
   const id = useSelector((state) => state.auth.me.cartId);
-  console.log("NAVBAR ID", id)
+  // console.log("NAVBAR ID", id)
   const username = useSelector((state) => state.auth.me.username)
 
 
