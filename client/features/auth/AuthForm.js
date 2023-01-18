@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { authenticate } from '../../app/store';
 import { useNavigate } from 'react-router-dom';
+import { addToCartAsync, fetchCartAsync } from '../slices/cartSlice';
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -14,17 +15,29 @@ const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  console.log('the auth form name', name)
+
+  const addToUserCart = async () => {
+    let user = useSelector((state) => state.auth.me)
+    let cart = useSelector((state) => state.cart2);
+      cart.forEach((item)=>{
+        let productId = item.id
+        let cartId = user.cartId
+        let quantity = item.quantity
+        dispatch(addToCartAsync({quantity, cartId, productId}))
+      })
+    }
+
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    console.log('formName', formName)
     dispatch(authenticate({ username, password, method: formName }));
+    addToUserCart();
     navigate("/products")
   };
+
 
   return (
     <div className='authForm'>
