@@ -132,21 +132,25 @@ button{
 } */
 
 /* ------------------------Single Product-------------------- */
-.singleProduct{
-  display: flex;
-  /* flex-direction: column;
-  align-items: left;
-  margin: 2rem; */
-  padding: 20px;
-  width: 100%;
+.singleProductContainer{
+display: flex;
+flex-direction: column;
+background: rgba(143, 188, 143, 0.804);
+padding: 40px;
+margin: 0 auto;
+border: 30px;
+border-radius: 10px;
+box-shadow: 5px 10px 30px rgba(0, 0, 0, 0.365);
 }
 
-.descriptionOfProduct {
+.singleImage {
   display: flex;
-  flex-direction: column;
-  align-items: left;
-  margin: 2rem;
+  flex-direction: row;
 }
+.singleDescription{
+  padding: 20px ;
+}
+
 
 /* ------------------------Logging in/ Signing up-------------------- */
 .authForm {

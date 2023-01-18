@@ -7,9 +7,6 @@ const VisitorCart = () => {
   const cart = useSelector((state) => state.cart2);
   const visitorId = cart.id;
 
- 
-  console.log("This is the visitor cart", cart);
-
   const Total = () => {
     let totalQuantity = 0;
     let totalPrice = 0;
@@ -30,9 +27,9 @@ const VisitorCart = () => {
       </div>
       <h2>ORDER SUMMARY</h2>
       <div>
-        <p>
-          Total {Total().totalQuantity} items: ${Total().totalPrice}
-        </p>
+        <h1>
+          Total: ${Total().totalPrice}
+        </h1>
       </div>
       <Link to={`/visitorCheckout/${visitorId}`}><button>Checkout</button> </Link>
     </>
