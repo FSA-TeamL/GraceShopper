@@ -131,6 +131,11 @@ button{
   background-color: darkseagreen;
 } */
 
+.productImage {
+  width: 100px;
+  height: 100px;
+}
+
 /* ------------------------Single Product-------------------- */
 .singleProductContainer{
 display: flex;
@@ -191,9 +196,9 @@ nav a {
   gap: 10px;
 }
 
-.cartItemImage{
+/* .cartItemImage{
   margin:5px;
-}
+} */
 
 .cartItemContainer{
   display: flex;

@@ -51,7 +51,7 @@ const visitorCheckout = () => {
                   <h2>{item.name}</h2>
                   <h4>${item.price}</h4>
                   <h4>Qty: {item.quantity}</h4>
-                  <img src={item.imageUrl} />
+                  <img className="productImage" src={item.imageUrl} />
                 </div>
               );
             })}

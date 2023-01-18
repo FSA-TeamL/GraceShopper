@@ -7,12 +7,13 @@ import {
 import { useDispatch } from "react-redux";
 
 const CartItem = ({ item }) => {
-  const dispatch = useDispatch(); 
-  
+  const dispatch = useDispatch();
+
   return (
     <>
+    {console.log("VISITOR CART ITEM", item)}
       <div className="cartItemContainer">
-      <img className="cartItemImage" src={item.imageUrl} />
+      <img className="productImage" src={item.imageUrl} />
         <h2 className="cartItemName">{item.name}</h2>
         <h2 className="cartItemPrice">${item.price}</h2>
         <h2 className="cartItemQty">Qty: {item.quantity}</h2>

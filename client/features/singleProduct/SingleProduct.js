@@ -62,33 +62,47 @@ const SingleProduct = () => {
 
   return (
     <>
+      <img className="productImage" src={product.imageUrl} />
+      <div>
+        <div>{product.name}</div>
+        <div>${product.price}</div>
+        <div>{product.description}</div>
+      </div>
+      {isLoggedIn ? (<button
+        className="productButton"
+        onClick={() => {
+          addToUserCart(product);
+        }}
+      >
+        User Add To Cart
+      </button>) : (<button onClick={() => dispatch(addToCart(product))}>Add to Cart</button>)}
       <div className="singleProductContainer">
         <h1 className="productName">{product.name}</h1>
         <div className="singleImage">
           <img src={product.imageUrl} width="300" height="300" />
-        <div className="singleDescription">
-        <h3>{product.description}</h3>
-        <h2>${product.price}</h2>
-        {isLoggedIn ? (
-          <button
-            className="productButton"
-            onClick={() => {
-              addToUserCart(product);
-            }}
-          >
-            Add To Cart
-          </button>
-        ) : (
-          <button  className="productButton" onClick={() => dispatch(addToCart(product))}>
-            Add to Cart
-          </button>
-        )}
+          <div className="singleDescription">
+            <h3>{product.description}</h3>
+            <h2>${product.price}</h2>
+            {isLoggedIn ? (
+              <button
+                className="productButton"
+                onClick={() => {
+                  addToUserCart(product);
+                }}
+              >
+                Add To Cart
+              </button>
+            ) : (
+              <button className="productButton" onClick={() => dispatch(addToCart(product))}>
+                Add to Cart
+              </button>
+            )}
 
-        {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
-        </div>
+            {user && user.isAdmin === true ? <EditProduct /> : <div></div>}
+          </div>
         </div>
 
-       
+
       </div>
     </>
   );
