@@ -11,21 +11,20 @@ const CartItem = ({ item }) => {
   
   return (
     <>
-      <div>
-        <h2>{item.name}</h2>
-        <h2>${item.price}</h2>
-        <h2>Qty: {item.quantity}</h2>
-        <div>
+      <div className="cartItemContainer">
+      <img className="cartItemImage" src={item.imageUrl} />
+        <h2 className="cartItemName">{item.name}</h2>
+        <h2 className="cartItemPrice">${item.price}</h2>
+        <h2 className="cartItemQty">Qty: {item.quantity}</h2>
+        <button onClick={() => dispatch(decrease(item.id))}>
+            -
+          </button>
+          <small>{item.quantity}</small>
           <button onClick={() => dispatch(increase(item.id))}>
             +
           </button>
-          <button onClick={() => dispatch(decrease(item.id))}>
-            -
-          </button>
-          <button onClick={() => dispatch(remove(item.id))}>Remove</button>
+          <button className="cartItemRemoveButton" onClick={() => dispatch(remove(item.id))}>Remove</button>
         </div>
-        <img src={item.imageUrl} />
-      </div>
     </>
   );
 };
