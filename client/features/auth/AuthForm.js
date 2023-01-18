@@ -15,6 +15,9 @@ const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
+  // let user = useSelector((state) => state.auth.me)
+  let cart = useSelector((state) => state.cart2);
+
 
   const addToUserCart = async () => {
     let user = useSelector((state) => state.auth.me)
@@ -28,15 +31,15 @@ const AuthForm = ({ name, displayName }) => {
     }
 
 
+
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
+    dispatch(authenticate({ username, password, method: formName }))
     addToUserCart();
-    navigate("/products")
-  };
+}
 
 
   return (
