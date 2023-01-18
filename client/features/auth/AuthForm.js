@@ -17,13 +17,14 @@ const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
+
   const user = useSelector((state) => state.auth.me);
   const cartId = useSelector((state) => state.auth.me.cartId);
   let cart = useSelector((state) => state.cart2);
   console.log("This is cart from addToUserCart", cart)
 
   useEffect(() => {
-    
+
   }, [dispatch]);
 
   useEffect(() => {
@@ -45,10 +46,12 @@ const AuthForm = ({ name, displayName }) => {
     }
 
   const handleSubmit = async (evt) => {
+
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
+
     await dispatch(authenticate({ username, password, method: formName }));
     console.log("This is user in the handleSubmit", user)
   };
