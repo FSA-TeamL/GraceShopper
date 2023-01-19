@@ -15,7 +15,8 @@ const VisitorCart = () => {
       totalQuantity += item.quantity;
       totalPrice += item.price * item.quantity;
     } );
-    return { totalPrice, totalQuantity };
+    let roundPrice = totalPrice.toFixed(2)
+    return { roundPrice, totalQuantity };
   };
 
   return (
@@ -29,7 +30,7 @@ const VisitorCart = () => {
       <h2>ORDER SUMMARY</h2>
       <div>
         <h1>
-          Total: ${Total().totalPrice}
+          Total: ${Total().roundPrice}
         </h1>
       </div>
       <Link to={`/visitorCheckout/${visitorId}`}><button>Checkout</button> </Link>

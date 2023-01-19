@@ -22,8 +22,21 @@ let visitorCart = useSelector((state) => state.cart2)
 
 let cart = useSelector(selectCart)
 
-
 const getCartSize = (cart) => {
+
+useEffect(() => {
+getUserCartSize(cart)
+  }, [cart])
+
+  const getUserCartSize = (cart) => {
+    let size = 0;
+    for (let i = 0; i < cart.length; i++) {
+      size += cart[i].quantity;
+    }
+    return size;
+  }
+
+const getVisitorCartSize = (cart) => {
   let size = 0;
   for (let i = 0; i < cart.length; i++) {
     size += cart[i].quantity;
@@ -42,7 +55,7 @@ const getCartSize = (cart) => {
             <Link to="/products">Home</Link>
             <Link to={`/usercart/${id}`}>
               <ShoppingCart size={28}/>
-            <small>({getCartSize(cart)})</small>
+            <small>({getUserCartSize(cart)})</small>
             </Link>
 
             <button type="button" onClick={logoutAndRedirectHome}>
@@ -57,7 +70,7 @@ const getCartSize = (cart) => {
             <Link to="/signup">Sign Up</Link>
             <Link to={`/cart`}>
               <ShoppingCart size={28}/>
-              <small>({getCartSize(visitorCart)})</small>
+              <small>({getVisitorCartSize(visitorCart)})</small>
             </Link>
 
           </div>
