@@ -22,15 +22,6 @@ let visitorCart = useSelector((state) => state.cart2)
 
 let cart = useSelector(selectCart)
 
-// useEffect(() => {
-// console.log("Does this even run - useeffect CART", cart)
-// }, [cart]);
-
-// useEffect(() => {
-//   console.log("Does this even run - useeffect", cart)
-// }, [dispatch])
-
-
 const getCartSize = (cart) => {
   let size = 0;
   for (let i = 0; i < cart.length; i++) {
