@@ -22,6 +22,7 @@ let visitorCart = useSelector((state) => state.cart2)
 
 let cart = useSelector(selectCart)
 
+
 const getCartSize = (cart) => {
 
 useEffect(() => {
