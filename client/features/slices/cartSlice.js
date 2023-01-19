@@ -22,10 +22,10 @@ export const addToCartAsync = createAsyncThunk(
         productId,
         imageUrl
       });
-      // const { data } = await axios.get(
-      //   `http://localhost:3000/api/cart/${cartId}`
-      // );
-      // return data;
+      const { data } = await axios.get(
+        `http://localhost:3000/api/cart/${cartId}`
+      );
+      return data;
     } catch (err) {
       console.log(err);
     }
