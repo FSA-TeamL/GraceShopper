@@ -49,8 +49,9 @@ const UserCart = () => {
     for (let i = 0; i < cart.length; i++) {
       let itemTotal = cart[i].product.price * cart[i].quantity;
       cartTotal += itemTotal;
+
     }
-    return cartTotal;
+    return Math.round(cartTotal * 100) / 100;
   };
 
   getCartTotal();

@@ -21,7 +21,7 @@ const UserCheckout = () => {
       let itemTotal = userCart[i].product.price * userCart[i].quantity;
       cartTotal += itemTotal
     }
-    return cartTotal
+    return Math.round(cartTotal * 100) / 100;
   }
 
   return (
