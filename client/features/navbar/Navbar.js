@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
@@ -22,9 +22,16 @@ let visitorCart = useSelector((state) => state.cart2)
 
 let cart = useSelector(selectCart)
 
+// useEffect(() => {
+// console.log("Does this even run - useeffect CART", cart)
+// }, [cart]);
+
+// useEffect(() => {
+//   console.log("Does this even run - useeffect", cart)
+// }, [dispatch])
+
 
 const getCartSize = (cart) => {
-
   let size = 0;
   for (let i = 0; i < cart.length; i++) {
     size += cart[i].quantity;
@@ -32,6 +39,8 @@ const getCartSize = (cart) => {
   return size;
 };
 
+
+let UserCartSize = getCartSize(cart)
 
   return (
     <div className='header'>

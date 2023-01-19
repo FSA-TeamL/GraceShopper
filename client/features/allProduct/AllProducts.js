@@ -30,6 +30,7 @@ const AllProducts = () => {
   useEffect(() => {
     dispatch(fetchProductsAsync());
     dispatch(fetchCartAsync(user.id));
+    console.log("allproducts useeffect dispatch - cart", cart)
   }, [dispatch]);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ const AllProducts = () => {
     let cartId = user.cartId;
     let productId = product.id;
     let imageUrl = product.imageUrl;
-    dispatch(addToCartAsync({ quantity, cartId, productId, imageUrl }));
+    return dispatch(addToCartAsync({ quantity, cartId, productId, imageUrl }));
   };
 
   return (
